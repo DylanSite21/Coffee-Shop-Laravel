@@ -2,7 +2,7 @@
     $role = auth()->user()->role ?? null;
 @endphp
 
-<div class="sidebar p-3 bg-black" style="min-height: calc(100vh - 56px);">
+<div class="sidebar col-md-3 col-lg-2 p-3" style="min-height: calc(100vh - 56px);">
     <ul class="nav flex-column">
         @if($role === 'admin')
             <li class="nav-item">

@@ -41,7 +41,8 @@
                 </div>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <input type="hidden" name="remember" value="0">
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
                     <label class="form-check-label" for="remember">Ingat saya</label>
                 </div>
 

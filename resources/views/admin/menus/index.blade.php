@@ -21,6 +21,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>gambar</th>
                     <th>Nama</th>
                     <th>Kategori</th>
                     <th>Harga</th>
@@ -32,6 +33,7 @@
                 @forelse($menus as $menu)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td><img src="{{ $menu->image ? asset('storage/' . $menu->image) : 'https://via.placeholder.com/100' }}" alt="{{ $menu->name }}" class="img-fluid" style="max-width: 100px;"></td>
                         <td>{{ $menu->name }}</td>
                         <td>{{ $menu->category->name ?? '-' }}</td>
                         <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
