@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#EADBC8"/>
+  <text x="200" y="140" text-anchor="middle" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif" font-size="16" fill="#6F4E37">No Image</text>
+  <text x="200" y="165" text-anchor="middle" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif" font-size="14" fill="#8D6E63">Menu Default</text>
+  <circle cx="200" cy="100" r="30" fill="#D7CCC8"/>
+  <rect x="185" y="125" width="30" height="20" rx="5" fill="#D7CCC8"/>
+</svg>
