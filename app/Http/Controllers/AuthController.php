@@ -41,10 +41,11 @@ class AuthController extends Controller
         $validated = $request->validated();
 
         $user = \App\Models\User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'role' => 'user',
+            'name'              => $validated['name'],
+            'email'             => $validated['email'],
+            'password'          => $validated['password'], // Otomatis ter-hash oleh Model Cast ('password' => 'hashed')
+            'role'              => 'user',
+            'email_verified_at' => now(),
         ]);
 
         Auth::login($user);

@@ -20,17 +20,17 @@ class ProfileController extends Controller
 
         if ($validated['new_password'] ?? null) {
             $user->update([
-                'name' => $validated['name'],
-                'email' => $validated['email'],
-                'password' => bcrypt($validated['new_password']),
+                'name'     => $validated['name'],
+                'email'    => $validated['email'],
+                'password' => $validated['new_password'], // Otomatis ter-hash oleh Model Cast ('password' => 'hashed')
             ]);
         } else {
             $user->update([
-                'name' => $validated['name'],
+                'name'  => $validated['name'],
                 'email' => $validated['email'],
             ]);
         }
 
-        return redirect()->route('user.profile.edit')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui.');
     }
 }

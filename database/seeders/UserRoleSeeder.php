@@ -4,37 +4,39 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UserRoleSeeder extends Seeder
 {
     public function run(): void
     {
-        User::updateOrCreate(
-            ['email' => 'admin@gmail.com'],
+        $users = [
             [
-                'name' => 'Admin',
-                'password' => Hash::make('password'),
-                'role' => 'admin',
-            ]
-        );
+                'name'  => 'Admin',
+                'email' => 'admin@coffeeshop.test',
+                'role'  => 'admin',
+            ],
+            [
+                'name'  => 'Manager',
+                'email' => 'manager@coffeeshop.test',
+                'role'  => 'manager',
+            ],
+            [
+                'name'  => 'Pelanggan',
+                'email' => 'user@coffeeshop.test',
+                'role'  => 'user',
+            ],
+        ];
 
-        User::updateOrCreate(
-            ['email' => 'manager@gmail.com'],
-            [
-                'name' => 'Manager',
-                'password' => Hash::make('password'),
-                'role' => 'manager',
-            ]
-        );
-
-        User::updateOrCreate(
-            ['email' => 'user@gmail.com'],
-            [
-                'name' => 'User',
-                'password' => Hash::make('password'),
-                'role' => 'user',
-            ]
-        );
+        foreach ($users as $userData) {
+            User::updateOrCreate(
+                ['email' => $userData['email']],
+                [
+                    'name'              => $userData['name'],
+                    'password'          => 'password', // Otomatis ter-hash oleh cast 'password' => 'hashed' di Model
+                    'role'              => $userData['role'],
+                    'email_verified_at' => now(),
+                ]
+            );
+        }
     }
 }
