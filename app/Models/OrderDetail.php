@@ -7,18 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderDetailFactory> */
     use HasFactory;
 
-    protected $fillable = ['order_id', 'menu_id', 'quantity', 'price', 'subtotal'];
-
-    protected function casts(): array
-    {
-        return [
-            'price' => 'decimal:2',
-            'subtotal' => 'decimal:2',
-        ];
-    }
+    protected $fillable = [
+        'order_id',
+        'menu_id',
+        'quantity',
+        'price',
+    ];
 
     public function order()
     {

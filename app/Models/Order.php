@@ -7,40 +7,57 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'order_number',
         'user_id',
-        'total',
+        'order_number',
+        'total_price',
         'status',
-        'payment_status',
         'payment_method',
-        'notes',
+        'payment_status',
         'shipping_address',
-        'phone',
+        'notes',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'total' => 'decimal:2',
-        ];
-    }
+    protected $casts = [
+        'total_price' => 'decimal:2',
+        'created_at' => 'datetime',
+    ];
 
+    // Relasi ke User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function orderDetails()
+    // Relasi ke OrderDetails
+    public function items()
     {
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function payment()
+    // Status badge
+    public function getStatusLabelAttribute()
     {
-        return $this->hasOne(Payment::class);
+        return match ($this->status) {
+            'pending' => '⏳ Pending',
+            'processing' => '🔄 Processing',
+            'completed' => '✅ Completed',
+            'cancelled' => '❌ Cancelled',
+            default => '📦 ' . ucfirst($this->status),
+        };
+    }
+
+    // Status color
+    public function getStatusColorAttribute()
+    {
+        return match ($this->status) {
+            'pending' => 'warning',
+            'processing' => 'info',
+            'completed' => 'success',
+            'cancelled' => 'danger',
+            default => 'secondary',
+        };
     }
 }

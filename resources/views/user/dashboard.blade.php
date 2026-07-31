@@ -1,51 +1,131 @@
 @extends('layouts.app')
 
-@section('title', 'User Dashboard')
+@section('title', 'User Dashboard - Coffee Shop')
 
 @section('content')
-<div class="row mb-4">
-    <div class="col-md-4">
-        <div class="card text-white bg-coffee">
-            <div class="card-body">
-                <h5 class="card-title">Total Pesanan</h5>
-                <p class="card-text display-4">{{ $totalOrders }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-coffee-light">
-            <div class="card-body">
-                <h5 class="card-title">Keranjang</h5>
-                <p class="card-text display-4">{{ $cartCount }} item</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white" style="background-color: #A3B18A;">
-            <div class="card-body">
-                <h5 class="card-title">Menu Tersedia</h5>
-                <p class="card-text">Nikmati menu kopi terbaik kami</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Pesanan Terbaru</h5>
-        @forelse($recentOrders as $order)
-            <div class="d-flex justify-content-between align-items-center border-bottom py-2">
-                <div>
-                    <strong>{{ $order->order_number }}</strong><br>
-                    <small class="text-muted">{{ $order->created_at->format('d M Y H:i') }}</small>
+<section class="dashboard-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold">👋 Welcome, {{ Auth::user()->name }}</h1>
+                    <span class="badge bg-warning text-dark px-3 py-2">
+                        {{ Auth::user()->role_label ?? 'User' }}
+                    </span>
                 </div>
-                <span class="badge bg-{{ $order->status == 'completed' ? 'success' : ($order->status == 'cancelled' ? 'danger' : 'warning') }}">
-                    {{ ucfirst($order->status) }}
-                </span>
             </div>
-        @empty
-            <p class="text-muted">Belum ada pesanan.</p>
-        @endforelse
+        </div>
+
+        <!-- Statistik -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3 text-center">
+                    <h3 class="text-warning">{{ $cartCount ?? 0 }}</h3>
+                    <p class="text-muted mb-0">🛒 Items in Cart</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3 text-center">
+                    <h3 class="text-warning">{{ $orderCount ?? 0 }}</h3>
+                    <p class="text-muted mb-0">📋 Total Orders</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3 text-center">
+                    <h3 class="text-warning">Rp 0</h3>
+                    <p class="text-muted mb-0">💰 Total Spent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <a href="{{ route('user.menus.index') }}" class="text-decoration-none">
+                    <div class="card shadow-sm p-4 text-center hover-card">
+                        <div class="display-4 mb-2">☕</div>
+                        <h5 class="fw-bold">Explore Menu</h5>
+                        <p class="text-muted small">Find your favorite coffee</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('user.cart.index') }}" class="text-decoration-none">
+                    <div class="card shadow-sm p-4 text-center hover-card">
+                        <div class="display-4 mb-2">🛒</div>
+                        <h5 class="fw-bold">My Cart</h5>
+                        <p class="text-muted small">{{ $cartCount ?? 0 }} items in cart</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('user.orders.index') }}" class="text-decoration-none">
+                    <div class="card shadow-sm p-4 text-center hover-card">
+                        <div class="display-4 mb-2">📋</div>
+                        <h5 class="fw-bold">My Orders</h5>
+                        <p class="text-muted small">{{ $orderCount ?? 0 }} total orders</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent">
+                        <h5 class="fw-bold mb-0">📋 Recent Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        @if($orders->count() > 0)
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($orders as $order)
+                                            <tr>
+                                                <td>#{{ str_pad($order->id, 4, '0', STR_PAD_LEFT) }}</td>
+                                                <td>{{ $order->created_at->format('d M Y, H:i') }}</td>
+                                                <td>
+                                                    <span class="badge bg-warning">⏳ Pending</span>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <div class="text-center py-4">
+                                <p class="text-muted">No orders yet. Start ordering!</p>
+                                <a href="{{ route('user.menus.index') }}" class="btn btn-warning">
+                                    Explore Menu →
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 @endsection
+
+@push('styles')
+<style>
+    .hover-card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.04);
+    }
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-color: #d4a24e;
+    }
+</style>
+@endpush
