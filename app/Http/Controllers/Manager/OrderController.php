@@ -13,7 +13,7 @@ class OrderController extends Controller
         $search = $request->input('search');
         $status = $request->input('status');
 
-        $orders = Order::with('user')
+        $orders = Order::with(['user', 'orderDetails.menu'])
             ->when($search, fn($q) => $q->where('order_number', 'like', "%{$search}%")->orWhereHas('user', fn($q2) => $q2->where('name', 'like', "%{$search}%")))
             ->when($status, fn($q) => $q->where('status', $status))
             ->paginate(10);

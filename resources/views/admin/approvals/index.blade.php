@@ -3,52 +3,85 @@
 @section('title', 'Approval Menu')
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title mb-3">Daftar Menu Menunggu Approval</h5>
+<div class="admin-page fade-in-up">
+    <div class="page-header-bar">
+        <div class="page-title-bar">
+            <div class="page-title-icon">
+                <i class="bi bi-check2-circle"></i>
+            </div>
+            <h2>Approval Menu</h2>
+        </div>
+    </div>
 
-        <div class="mb-3">
-            <form method="GET" action="{{ route('admin.approvals.index') }}" class="d-flex">
-                <input type="text" name="search" class="form-control me-2" placeholder="Cari menu..." value="{{ $search }}">
-                <button type="submit" class="btn btn-coffee">Cari</button>
+    <div class="menu-table-card">
+        <div class="menu-toolbar">
+            <form method="GET" action="{{ route('admin.approvals.index') }}" class="menu-search-form">
+                <input type="text" name="search" class="form-control" placeholder="Cari menu..." value="{{ $search }}">
+                <button type="submit" class="btn-primary-solid">
+                    <i class="bi bi-search"></i>
+                </button>
             </form>
         </div>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Menu</th>
-                    <th>Kategori</th>
-                    <th>Harga</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($menus as $menu)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $menu->name }}</td>
-                        <td>{{ $menu->category->name ?? '-' }}</td>
-                        <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
-                        <td>
-                            <form action="{{ route('admin.approvals.approve', $menu) }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">Approve</button>
-                            </form>
-                            <form action="{{ route('admin.approvals.reject', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin tolak?')">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                            </form>
-                        </td>
+                        <th>No</th>
+                        <th>Nama Menu</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
                     </tr>
-                @empty
-                    <tr><td colspan="5" class="text-center">Tidak ada menu menunggu approval.</td></tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse($menus as $menu)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><strong>{{ $menu->name }}</strong></td>
+                            <td>{{ $menu->category->name ?? '-' }}</td>
+                            <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
+                            <td>
+                                <div class="action-btns">
+                                    <form action="{{ route('admin.approvals.approve', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Setujui menu ini?')">
+                                        @csrf
+                                        <button type="submit" class="approve-btn" title="Approve">
+                                            <i class="bi bi-check-lg"></i>
+                                            Approve
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('admin.approvals.reject', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin tolak?')">
+                                        @csrf
+                                        <button type="submit" class="reject-btn" title="Reject">
+                                            <i class="bi bi-x-lg"></i>
+                                            Reject
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <div class="empty-state-icon">
+                                        <i class="bi bi-check2-all"></i>
+                                    </div>
+                                    <h5 class="text-coffee mb-2">Tidak ada menunggu approval</h5>
+                                    <p class="text-muted-custom">Semua menu sudah diproses. Bagus!</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
 
-        {{ $menus->links() }}
+        @if($menus->hasPages())
+            <div class="pagination-container">
+                {{ $menus->links() }}
+            </div>
+        @endif
     </div>
 </div>
 @endsection
