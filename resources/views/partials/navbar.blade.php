@@ -54,6 +54,23 @@
             </ul>
 
             <ul class="navbar-nav align-items-center gap-1">
+                <li class="nav-item me-1">
+                    <a href="{{ route('user.cart.index') }}" class="nav-link position-relative px-2" title="Keranjang">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        @auth
+                            @if(auth()->user()->role === 'user')
+                                @php
+                                    $activeCart = auth()->user()->carts()->where('status', 'active')->with('cartItems')->first();
+                                    $cartCount = $activeCart ? $activeCart->cartItems->sum('quantity') : 0;
+                                @endphp
+                                @if($cartCount > 0)
+                                    <span class="cart-badge">{{ $cartCount > 99 ? '99+' : $cartCount }}</span>
+                                @endif
+                            @endif
+                        @endauth
+                    </a>
+                </li>
+
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Masuk</a>
@@ -62,19 +79,122 @@
                         <a class="btn btn-gold btn-sm px-3" href="{{ route('register') }}">Daftar</a>
                     </li>
                 @else
-                    @if(auth()->user()->role === 'user')
-                        <li class="nav-item me-1">
-                            <a href="{{ route('user.cart.index') }}" class="nav-link position-relative" title="Keranjang">
-                                <i class="bi bi-bag2 fs-5"></i>
-                                @php
-                                    $cartCount = auth()->user()->carts()->withCount('cartItems')->first()?->cart_items_count ?? 0;
-                                @endphp
-                                @if($cartCount > 0)
-                                    <span class="cart-badge">{{ $cartCount > 9 ? '9+' : $cartCount }}</span>
+
+                    <li class="nav-item dropdown me-1">
+                        @php
+                            $unreadCount = 0;
+                            $notifications = collect();
+
+                            if (auth()->user()->role === 'user') {
+                                $userOrders = \App\Models\Order::where('user_id', auth()->id())->latest()->take(5)->get();
+                                $unreadCount = \App\Models\Order::where('user_id', auth()->id())
+                                    ->whereIn('status', ['pending', 'processing'])
+                                    ->count();
+                                foreach ($userOrders as $ord) {
+                                    $statusLabel = [
+                                        'pending' => 'Menunggu Pembayaran / Konfirmasi',
+                                        'processing' => 'Pesanan Diproses',
+                                        'completed' => 'Pesanan Selesai',
+                                        'cancelled' => 'Pesanan Dibatalkan',
+                                    ][$ord->status] ?? ucfirst($ord->status);
+
+                                    $statusBadge = [
+                                        'pending' => 'bg-warning text-dark',
+                                        'processing' => 'bg-info text-dark',
+                                        'completed' => 'bg-success text-white',
+                                        'cancelled' => 'bg-danger text-white',
+                                    ][$ord->status] ?? 'bg-secondary text-white';
+
+                                    $notifications->push([
+                                        'title' => "Pesanan #{$ord->order_number}",
+                                        'desc' => $statusLabel,
+                                        'badge' => $statusBadge,
+                                        'status' => $ord->status,
+                                        'time' => $ord->updated_at->diffForHumans(),
+                                        'link' => route('user.orders.show', $ord->id),
+                                    ]);
+                                }
+                            } elseif (auth()->user()->role === 'manager') {
+                                $pendingOrders = \App\Models\Order::where('status', 'pending')->latest()->take(5)->get();
+                                $unreadCount = \App\Models\Order::where('status', 'pending')->count();
+                                foreach ($pendingOrders as $ord) {
+                                    $notifications->push([
+                                        'title' => "Pesanan Masuk #{$ord->order_number}",
+                                        'desc' => "Total: Rp " . number_format($ord->total, 0, ',', '.'),
+                                        'badge' => 'bg-warning text-dark',
+                                        'status' => 'Pending',
+                                        'time' => $ord->created_at->diffForHumans(),
+                                        'link' => route('manager.orders.show', $ord->id),
+                                    ]);
+                                }
+                            } elseif (auth()->user()->role === 'admin') {
+                                $pendingMenus = \App\Models\Menu::where('status', 'pending')->latest()->take(5)->get();
+                                $unreadCount = \App\Models\Menu::where('status', 'pending')->count();
+                                foreach ($pendingMenus as $menu) {
+                                    $notifications->push([
+                                        'title' => "Persetujuan Menu: {$menu->name}",
+                                        'desc' => "Harga: Rp " . number_format($menu->price, 0, ',', '.'),
+                                        'badge' => 'bg-warning text-dark',
+                                        'status' => 'Pending',
+                                        'time' => $menu->created_at->diffForHumans(),
+                                        'link' => route('admin.approvals.index'),
+                                    ]);
+                                }
+                            }
+                        @endphp
+
+                        <a class="nav-link position-relative px-2 dropdown-toggle hide-arrow" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Notifikasi">
+                            <i class="bi bi-bell fs-5"></i>
+                            @if($unreadCount > 0)
+                                <span class="notification-badge">{{ $unreadCount > 9 ? '9+' : $unreadCount }}</span>
+                            @endif
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end notification-dropdown shadow-lg border-0 py-0" aria-labelledby="notificationDropdown" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                            <li class="dropdown-header d-flex justify-content-between align-items-center py-2 px-3 border-bottom" style="background-color: var(--color-surface-alt, #2C1A11); color: var(--color-gold, #D4A855);">
+                                <span class="fw-bold fs-6 mb-0">Notifikasi</span>
+                                @if($unreadCount > 0)
+                                    <span class="badge bg-warning text-dark rounded-pill">{{ $unreadCount }} Baru</span>
                                 @endif
-                            </a>
-                        </li>
-                    @endif
+                            </li>
+
+                            @if($notifications->isEmpty())
+                                <li class="text-center py-4 text-muted">
+                                    <i class="bi bi-bell-slash fs-4 d-block mb-1"></i>
+                                    <small>Tidak ada notifikasi baru</small>
+                                </li>
+                            @else
+                                @foreach($notifications as $notif)
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3 border-bottom text-wrap d-flex flex-column gap-1" href="{{ $notif['link'] }}">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <strong style="font-size: 0.85rem;" class="text-truncate me-2">{{ $notif['title'] }}</strong>
+                                                <small class="text-muted ms-auto" style="font-size: 0.7rem; white-space: nowrap;">{{ $notif['time'] }}</small>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="text-muted small" style="font-size: 0.78rem;">{{ $notif['desc'] }}</span>
+                                                <span class="badge {{ $notif['badge'] }}" style="font-size: 0.65rem;">{{ ucfirst($notif['status']) }}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                                @if(auth()->user()->role === 'user')
+                                    <li class="text-center py-2 bg-light">
+                                        <a href="{{ route('user.orders.index') }}" class="text-decoration-none small fw-semibold text-coffee">Lihat Semua Pesanan</a>
+                                    </li>
+                                @elseif(auth()->user()->role === 'manager')
+                                    <li class="text-center py-2 bg-light">
+                                        <a href="{{ route('manager.orders.index') }}" class="text-decoration-none small fw-semibold text-coffee">Lihat Semua Pesanan</a>
+                                    </li>
+                                @elseif(auth()->user()->role === 'admin')
+                                    <li class="text-center py-2 bg-light">
+                                        <a href="{{ route('admin.approvals.index') }}" class="text-decoration-none small fw-semibold text-coffee">Kelola Persetujuan</a>
+                                    </li>
+                                @endif
+                            @endif
+                        </ul>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">

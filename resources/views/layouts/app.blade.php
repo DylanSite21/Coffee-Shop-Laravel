@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Kopi Nusantara — Kedai kopi premium Indonesia dengan biji pilihan petani lokal, diracik oleh barista profesional.">
     <title>@yield('title', 'Kopi Nusantara — Kedai Kopi Premium Indonesia')</title>
 

@@ -40,5 +40,8 @@
     @endforelse
 </div>
 
-{{ $menus->links() }}
+
+<div class="d-flex justify-content-center mt-4">
+    {{ $menus->links() }}
+</div>
 @endsection

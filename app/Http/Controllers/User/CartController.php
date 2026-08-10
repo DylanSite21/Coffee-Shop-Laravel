@@ -68,6 +68,9 @@ class CartController extends Controller
         ]);
 
         if ($cartItem->cart->user_id !== auth()->id()) {
+            if ($request->wantsJson() || $request->ajax()) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
             abort(403);
         }
 
@@ -77,6 +80,21 @@ class CartController extends Controller
         ]);
 
         $this->updateCartTotal($cartItem->cart);
+
+        $cart = $cartItem->cart->fresh(['cartItems']);
+        $cartCount = $cart->cartItems->sum('quantity');
+
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Keranjang berhasil diperbarui.',
+                'item_id' => $cartItem->id,
+                'item_quantity' => $cartItem->quantity,
+                'item_subtotal' => 'Rp ' . number_format($cartItem->subtotal, 0, ',', '.'),
+                'cart_total' => 'Rp ' . number_format($cart->total, 0, ',', '.'),
+                'cart_count' => $cartCount,
+            ]);
+        }
 
         return redirect()->route('user.cart.index')->with('success', 'Keranjang berhasil diperbarui.');
     }

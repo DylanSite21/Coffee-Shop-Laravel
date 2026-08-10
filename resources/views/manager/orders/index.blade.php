@@ -124,7 +124,7 @@
         </div>
 
         @if($orders->hasPages())
-            <div class="pagination-wrapper">
+            <div class="pagination-wrapper d-flex justify-content-center mt-4">
                 {{ $orders->links() }}
             </div>
         @endif

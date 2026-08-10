@@ -87,7 +87,7 @@
         </div>
 
         @if($menus->hasPages())
-            <div class="pagination-container">
+            <div class="pagination-container d-flex justify-content-center mt-4">
                 {{ $menus->links() }}
             </div>
         @endif

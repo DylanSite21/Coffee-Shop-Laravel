@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="section-title mb-0">Keranjang Belanja</h2>
         @if(!$cart->cartItems->isEmpty())
-            <span class="text-muted-custom">{{ $cart->cartItems->count() }} item</span>
+            <span class="text-muted-custom" id="cart-item-count">{{ $cart->cartItems->count() }} item</span>
         @endif
     </div>
 
@@ -25,7 +25,7 @@
     @else
         <div class="cart-items">
             @foreach($cart->cartItems as $item)
-                <div class="cart-item-card mb-3">
+                <div class="cart-item-card mb-3" id="cart-item-card-{{ $item->id }}">
                     <div class="cart-item-row">
                         <div class="cart-item-info">
                             <h6 class="cart-item-name mb-1">{{ $item->menu->name ?? '-' }}</h6>
@@ -47,7 +47,7 @@
 
                         <div class="cart-item-subtotal">
                             <span class="subtotal-label">Subtotal</span>
-                            <span class="subtotal-value">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</span>
+                            <span class="subtotal-value" id="subtotal-{{ $item->id }}">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</span>
                         </div>
 
                         <form action="{{ route('user.cart.destroy', $item) }}" method="POST" id="removeCart-{{ $item->id }}" onsubmit="return confirmDelete(event, 'Yakin hapus item ini dari keranjang?')">
@@ -65,7 +65,7 @@
             <div class="summary-card">
                 <div class="summary-row total-row">
                     <span class="fw-semibold">Total</span>
-                    <span class="total-value">Rp {{ number_format($cart->total, 0, ',', '.') }}</span>
+                    <span class="total-value" id="cart-total">Rp {{ number_format($cart->total, 0, ',', '.') }}</span>
                 </div>
                 <a href="{{ route('user.checkout.index') }}" class="btn btn-coffee btn-checkout w-100 mt-3">
                     <i class="bi bi-bag-check me-2"></i>Checkout
