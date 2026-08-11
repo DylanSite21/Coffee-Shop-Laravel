@@ -33,16 +33,18 @@
     @else
         @include('partials.navbar')
 
-        <div class="">
-            <div class="row">
+        <div class="container-fluid px-0">
+            <div class="row g-0">
                 @auth
                     @include('partials.sidebar')
                 @endauth
 
-                <main class="@auth col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 @else col-12 py-4 @endauth">
+                <main
+                    class="@auth col-md-9 ms-sm-auto col-lg-10 py-4 px-2 overflow-hidden @else col-12 py-4 overflow-hidden @endauth"
+                    style="min-width: 0;">
                     @if (auth()->check())
                         <div
-                            class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                            class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 px-md-4">
                             <h1>@yield('title')</h1>
                         </div>
                     @endif
