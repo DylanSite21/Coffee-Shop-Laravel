@@ -9,6 +9,8 @@
         content="Kopi Nusantara — Kedai kopi premium Indonesia dengan biji pilihan petani lokal, diracik oleh barista profesional.">
     <title>@yield('title', 'Kopi Nusantara — Kedai Kopi Premium Indonesia')</title>
 
+    {{-- Icons --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('coffee-cup-svgrepo-com.svg') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">

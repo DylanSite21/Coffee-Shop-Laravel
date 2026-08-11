@@ -11,7 +11,7 @@
         </button>
 
         <div class="collapse navbar-collapse " id="navbarNav">
-            {{-- <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto">
                 @guest
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
@@ -55,7 +55,7 @@
                         </li>
                     @endif
                 @endauth
-            </ul> --}}
+            </ul>
 
             <ul class="navbar-nav align-items-center gap-1 ms-auto">
 
@@ -120,7 +120,7 @@
                                         'badge' => 'bg-warning text-dark',
                                         'status' => 'Pending',
                                         'time' => $ord->created_at->diffForHumans(),
-                                        'link' => route('manager.orders.show', $ord->id),
+                                        'link' => route('manager.orders.index'),
                                     ]);
                                 }
                             } elseif (auth()->user()->role === 'admin') {
