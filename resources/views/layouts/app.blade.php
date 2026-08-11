@@ -33,7 +33,7 @@
     @else
         @include('partials.navbar')
 
-        <div class="container-fluid px-3 px-lg-4">
+        <div class="">
             <div class="row">
                 @auth
                     @include('partials.sidebar')

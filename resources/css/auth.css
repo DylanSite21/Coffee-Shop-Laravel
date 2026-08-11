@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap");
 
 /* ==========================================
    AUTH PAGE STYLES — Kopi Nusantara
    ========================================== */
 body.auth-page {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -19,7 +19,7 @@ body.auth-page {
 /* ---- Left Visual Panel ---- */
 .auth-visual {
     flex: 0 0 45%;
-    background: linear-gradient(160deg, #2C1810 0%, #3E1F0D 45%, #6B3A2A 100%);
+    background: linear-gradient(160deg, #2c1810 0%, #3e1f0d 45%, #6b3a2a 100%);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -30,10 +30,10 @@ body.auth-page {
 }
 
 .auth-visual::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero-bg.jpg');
+    background-image: url("/images/hero-bg.jpg");
     background-size: cover;
     background-position: center;
     opacity: 0.18;
@@ -41,32 +41,40 @@ body.auth-page {
 }
 
 .auth-visual::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, rgba(44,24,16,0.6) 0%, rgba(107,58,42,0.3) 100%);
+    background: linear-gradient(
+        160deg,
+        rgba(44, 24, 16, 0.6) 0%,
+        rgba(107, 58, 42, 0.3) 100%
+    );
 }
 
 .auth-visual-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #FDF6ED;
+    color: #fdf6ed;
 }
 
 .auth-visual-logo {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2.75rem;
     font-weight: 800;
-    color: #FDF6ED;
+    color: #fdf6ed;
     line-height: 1.1;
     margin-bottom: 0.5rem;
 }
 
-.auth-visual-logo .logo-icon { font-size: 3rem; display: block; margin-bottom: 0.25rem; }
+.auth-visual-logo .logo-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
 
 .auth-visual-tagline {
-    color: #C08B5C;
+    color: #c08b5c;
     font-size: 0.95rem;
     font-style: italic;
     margin-bottom: 2.5rem;
@@ -85,18 +93,23 @@ body.auth-page {
     gap: 0.75rem;
     padding: 0.625rem 0;
     font-size: 0.9rem;
-    color: rgba(253,246,237,0.85);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: rgba(253, 246, 237, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.auth-feature-list li:last-child { border-bottom: none; }
+.auth-feature-list li:last-child {
+    border-bottom: none;
+}
 
 .auth-feature-list .feature-icon {
-    width: 34px; height: 34px;
-    background-color: rgba(212,168,85,0.2);
-    border: 1px solid rgba(212,168,85,0.3);
+    width: 34px;
+    height: 34px;
+    background-color: rgba(212, 168, 85, 0.2);
+    border: 1px solid rgba(212, 168, 85, 0.3);
     border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.95rem;
     flex-shrink: 0;
 }
@@ -104,7 +117,7 @@ body.auth-page {
 /* ---- Right Form Panel ---- */
 .auth-panel {
     flex: 1;
-    background-color: #FDF6ED;
+    background-color: #fdf6ed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,11 +126,17 @@ body.auth-page {
 }
 
 .auth-panel::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; right: 0;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(192,139,92,0.06) 0%, transparent 70%);
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+        circle,
+        rgba(192, 139, 92, 0.06) 0%,
+        transparent 70%
+    );
     pointer-events: none;
 }
 
@@ -129,22 +148,22 @@ body.auth-page {
 }
 
 .auth-logo {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: 800;
-    color: #3E1F0D;
+    color: #3e1f0d;
     margin-bottom: 0.25rem;
 }
 
 .auth-subtitle {
-    color: #6B4C3B;
+    color: #6b4c3b;
     font-size: 0.9rem;
     margin-bottom: 1.75rem;
 }
 
 /* ---- Form Controls ---- */
 .auth-form-wrap .form-label {
-    color: #3E1F0D;
+    color: #3e1f0d;
     font-weight: 600;
     font-size: 0.82rem;
     letter-spacing: 0.3px;
@@ -153,9 +172,9 @@ body.auth-page {
 }
 
 .auth-form-wrap .form-control {
-    border: 1.5px solid #DEC9AA;
-    background-color: #FDF6ED;
-    color: #2C1810;
+    border: 1.5px solid #dec9aa;
+    background-color: #fdf6ed;
+    color: #2c1810;
     border-radius: 0.5rem;
     padding: 0.7rem 1rem;
     font-size: 0.9rem;
@@ -163,31 +182,42 @@ body.auth-page {
 }
 
 .auth-form-wrap .form-control:focus {
-    border-color: #C08B5C;
-    box-shadow: 0 0 0 3px rgba(192,139,92,0.15);
-    background-color: #FDF6ED;
-    color: #2C1810;
+    border-color: #c08b5c;
+    box-shadow: 0 0 0 3px rgba(192, 139, 92, 0.15);
+    background-color: #fdf6ed;
+    color: #2c1810;
 }
 
-.auth-form-wrap .form-control::placeholder { color: #9E7B6A; }
+.auth-form-wrap .form-control::placeholder {
+    color: #9e7b6a;
+}
 
 .input-group-text {
-    background-color: #F5E8D4;
-    border: 1.5px solid #DEC9AA;
-    color: #6B4C3B;
+    background-color: #f5e8d4;
+    border: 1.5px solid #dec9aa;
+    color: #6b4c3b;
     cursor: pointer;
     border-radius: 0 0.5rem 0.5rem 0;
 }
 
-.input-group-text:hover { background-color: #EDD9BC; color: #3E1F0D; }
+.input-group-text:hover {
+    background-color: #edd9bc;
+    color: #3e1f0d;
+}
 
-.auth-form-wrap .form-check-label { color: #3E1F0D; font-size: 0.875rem; }
-.auth-form-wrap .form-check-input:checked { background-color: #6B3A2A; border-color: #6B3A2A; }
+.auth-form-wrap .form-check-label {
+    color: #3e1f0d;
+    font-size: 0.875rem;
+}
+.auth-form-wrap .form-check-input:checked {
+    background-color: #6b3a2a;
+    border-color: #6b3a2a;
+}
 
 /* ---- Buttons ---- */
 .btn-auth {
-    background: linear-gradient(135deg, #6B3A2A 0%, #3E1F0D 100%);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #6b3a2a 0%, #3e1f0d 100%);
+    color: #fdf6ed;
     border: none;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -201,10 +231,12 @@ body.auth-page {
 .btn-auth:hover {
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(62,31,13,0.35);
+    box-shadow: 0 8px 24px rgba(62, 31, 13, 0.35);
 }
 
-.btn-auth:active { transform: translateY(0); }
+.btn-auth:active {
+    transform: translateY(0);
+}
 
 /* ---- Alerts ---- */
 .auth-form-wrap .alert {
@@ -213,39 +245,56 @@ body.auth-page {
     font-size: 0.875rem;
 }
 
-.auth-form-wrap .alert-danger  { background-color: #FFEBEE; color: #B71C1C; border-left: 4px solid #C62828; }
-.auth-form-wrap .alert-success { background-color: #E8F5E9; color: #1B5E20; border-left: 4px solid #2E7D32; }
+.auth-form-wrap .alert-danger {
+    background-color: #ffebee;
+    color: #b71c1c;
+    border-left: 4px solid #c62828;
+}
+.auth-form-wrap .alert-success {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-left: 4px solid #2e7d32;
+}
 
 /* ---- Links ---- */
 .auth-form-wrap a {
-    color: #6B3A2A;
+    color: #6b3a2a;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.auth-form-wrap a:hover { color: #3E1F0D; text-decoration: underline; }
+.auth-form-wrap a:hover {
+    color: #3e1f0d;
+    text-decoration: underline;
+}
 
 .auth-divider {
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: #9E7B6A;
+    color: #9e7b6a;
     font-size: 0.8rem;
     margin: 1.25rem 0;
 }
 
 .auth-divider::before,
 .auth-divider::after {
-    content: '';
+    content: "";
     flex: 1;
     height: 1px;
-    background-color: #DEC9AA;
+    background-color: #dec9aa;
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
-    .auth-visual { display: none; }
-    .auth-panel { padding: 2rem 1.5rem; }
-    .auth-form-wrap { max-width: 100%; }
+    .auth-visual {
+        display: none;
+    }
+    .auth-panel {
+        padding: 2rem 1.5rem;
+    }
+    .auth-form-wrap {
+        max-width: 100%;
+    }
 }
