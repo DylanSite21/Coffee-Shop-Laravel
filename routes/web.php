@@ -48,6 +48,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 Route::middleware(['auth', 'manager'])->prefix('manager')->name('manager.')->group(function () {
     Route::get('/dashboard', [ManagerDashboardController::class, 'index'])->name('dashboard');
     Route::resource('menus', MenuSubmissionController::class);
+    Route::post('/menus/{menu}/approve', [MenuSubmissionController::class, 'approve'])->name('menus.approve');
+    Route::post('/menus/{menu}/reject', [MenuSubmissionController::class, 'reject'])->name('menus.reject');
     Route::get('/orders', [ManagerOrderController::class, 'index'])->name('orders.index');
     Route::post('/orders/{order}/accept', [ManagerOrderController::class, 'accept'])->name('orders.accept');
     Route::post('/orders/{order}/reject', [ManagerOrderController::class, 'reject'])->name('orders.reject');

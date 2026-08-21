@@ -21,7 +21,7 @@ class MenuRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:1000'],
             'price' => ['required', 'numeric', 'min:0'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'status' => ['required', 'in:pending,approved,rejected'],
+            'status' => ['nullable', 'in:pending,approved,rejected'],
             'is_available' => ['nullable', 'boolean'],
         ];
     }

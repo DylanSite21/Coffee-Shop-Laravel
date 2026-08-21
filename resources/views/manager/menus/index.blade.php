@@ -57,6 +57,22 @@
                             </td>
                             <td>
                                 <div class="action-btns">
+                                    <!-- @if($menu->status !== 'approved')
+                                        <form action="{{ route('manager.menus.approve', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Setujui menu ini?')">
+                                            @csrf
+                                            <button type="submit" class="btn-icon btn-icon-edit" style="color: #2e7d32;" title="Setujui (Approve)">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                    @if($menu->status !== 'rejected')
+                                        <form action="{{ route('manager.menus.reject', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Tolak menu ini?')">
+                                            @csrf
+                                            <button type="submit" class="btn-icon btn-icon-delete" style="color: #c62828;" title="Tolak (Reject)">
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </button>
+                                        </form>
+                                    @endif -->
                                     <a href="{{ route('manager.menus.edit', $menu) }}" class="btn-icon btn-icon-edit" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
