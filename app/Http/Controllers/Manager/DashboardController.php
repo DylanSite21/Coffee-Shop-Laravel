@@ -12,10 +12,10 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [
-            'totalMenus' => Menu::where('user_id', auth()->id())->count(),
-            'pendingMenus' => Menu::where('user_id', auth()->id())->where('status', 'pending')->count(),
-            'approvedMenus' => Menu::where('user_id', auth()->id())->where('status', 'approved')->count(),
-            'rejectedMenus' => Menu::where('user_id', auth()->id())->where('status', 'rejected')->count(),
+            'totalMenus' => Menu::count(),
+            'pendingMenus' => Menu::where('status', 'pending')->count(),
+            'approvedMenus' => Menu::where('status', 'approved')->count(),
+            'rejectedMenus' => Menu::where('status', 'rejected')->count(),
             'incomingOrders' => Order::where('status', 'pending')->count(),
             'processingOrders' => Order::where('status', 'processing')->count(),
             'completedOrders' => Order::where('status', 'completed')->count(),

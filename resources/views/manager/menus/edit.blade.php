@@ -38,14 +38,17 @@
                 @endif
                 <img id="imagePreview" class="image-preview mt-2" src="#" alt="Preview" style="display: none;">
             </div>
-            <div class="mb-3">
-                <label class="form-label">Status</label>
-                <select name="status" class="form-control">
-                    <option value="pending" {{ $menu->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                    <option value="approved" {{ $menu->status == 'approved' ? 'selected' : '' }}>Approved</option>
-                    <option value="rejected" {{ $menu->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+            <!-- <div class="mb-3">
+                <label class="form-label">Status Menu</label>
+                <select name="status" class="form-control @error('status') is-invalid @enderror">
+                    <option value="pending" {{ old('status', $menu->status) == 'pending' ? 'selected' : '' }}>Pending (Menunggu Persetujuan)</option>
+                    <option value="approved" {{ old('status', $menu->status) == 'approved' ? 'selected' : '' }}>Approved (Disetujui)</option>
+                    <option value="rejected" {{ old('status', $menu->status) == 'rejected' ? 'selected' : '' }}>Rejected (Ditolak)</option>
                 </select>
-            </div>
+                @error('status')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div> -->
             <div class="mb-3 form-check">
                 <input type="hidden" name="is_available" value="0">
                 <input type="checkbox" name="is_available" class="form-check-input" id="is_available" value="1" {{ $menu->is_available ? 'checked' : '' }}>

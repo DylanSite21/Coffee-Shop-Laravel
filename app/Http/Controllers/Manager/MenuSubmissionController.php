@@ -14,7 +14,6 @@ class MenuSubmissionController extends Controller
     {
         $search = $request->input('search');
         $menus = Menu::with('category')
-            ->where('user_id', auth()->id())
             ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%"))
             ->paginate(10);
 
@@ -41,30 +40,18 @@ class MenuSubmissionController extends Controller
 
     public function show(Menu $menu)
     {
-        if ($menu->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $menu->load('category');
         return view('manager.menus.show', compact('menu'));
     }
 
     public function edit(Menu $menu)
     {
-        if ($menu->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $categories = Category::all();
         return view('manager.menus.edit', compact('menu', 'categories'));
     }
 
     public function update(MenuRequest $request, Menu $menu)
     {
-        if ($menu->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $menu->update($request->validated());
 
         if ($request->hasFile('image')) {
@@ -77,12 +64,22 @@ class MenuSubmissionController extends Controller
 
     public function destroy(Menu $menu)
     {
-        if ($menu->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $menu->delete();
 
         return redirect()->route('manager.menus.index')->with('success', 'Menu berhasil dihapus.');
+    }
+
+    public function approve(Menu $menu)
+    {
+        $menu->update(['status' => 'approved']);
+
+        return back()->with('success', 'Status menu berhasil disetujui (Approved).');
+    }
+
+    public function reject(Menu $menu)
+    {
+        $menu->update(['status' => 'rejected']);
+
+        return back()->with('success', 'Status menu berhasil ditolak (Rejected).');
     }
 }

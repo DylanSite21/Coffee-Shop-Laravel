@@ -35,14 +35,17 @@
                 <input type="file" name="image" class="form-control" onchange="previewImage(this, 'imagePreview')">
                 <img id="imagePreview" class="image-preview mt-2" src="#" alt="Preview" style="display: none;">
             </div>
-            <div class="mb-3">
-                <label class="form-label">Status</label>
-                <select name="status" class="form-control">
-                    <option value="pending">Pending</option>
-                    <option value="approved">Approved</option>
-                    <option value="rejected">Rejected</option>
+            <!-- <div class="mb-3">
+                <label class="form-label">Status Menu</label>
+                <select name="status" class="form-control @error('status') is-invalid @enderror">
+                    <option value="pending" {{ old('status', 'pending') == 'pending' ? 'selected' : '' }}>Pending (Menunggu Persetujuan)</option>
+                    <option value="approved" {{ old('status') == 'approved' ? 'selected' : '' }}>Approved (Disetujui)</option>
+                    <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected (Ditolak)</option>
                 </select>
-            </div>
+                @error('status')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div> -->
             <div class="mb-3 form-check">
                 <input type="hidden" name="is_available" value="0">
                 <input type="checkbox" name="is_available" class="form-check-input" id="is_available" value="1" checked>
