@@ -33,6 +33,7 @@
                     <option value="processing" {{ $status == 'processing' ? 'selected' : '' }}>Processing</option>
                     <option value="completed" {{ $status == 'completed' ? 'selected' : '' }}>Completed</option>
                     <option value="cancelled" {{ $status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    <option value="refunded" {{ $status == 'refunded' ? 'selected' : '' }}>Refunded</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -78,12 +79,16 @@
                                         'processing' => 'status-processing',
                                         'completed' => 'status-completed',
                                         'cancelled' => 'status-cancelled',
+                                        'refunded' => 'status-refunded',
                                         default => 'status-pending'
                                     };
                                 @endphp
                                 <span class="status-badge {{ $statusClass }}">
                                     {{ ucfirst($order->status) }}
                                 </span>
+                                @if($order->refund && $order->refund->status === 'pending')
+                                    <span class="badge bg-warning text-dark ms-1 small" style="font-size: 0.65rem;">Refund Diajukan</span>
+                                @endif
                             </td>
                             <td class="text-end">
                                 <a href="{{ route('user.orders.show', $order) }}" class="btn-coffee-sm">

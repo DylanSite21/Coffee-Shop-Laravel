@@ -18,12 +18,10 @@ use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\OrderController as UserOrderController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\RefundController as UserRefundController;
+use App\Http\Controllers\Manager\RefundController as ManagerRefundController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/test', function () {
-    return view('test');
-});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -48,13 +46,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 Route::middleware(['auth', 'manager'])->prefix('manager')->name('manager.')->group(function () {
     Route::get('/dashboard', [ManagerDashboardController::class, 'index'])->name('dashboard');
     Route::resource('menus', MenuSubmissionController::class);
-    Route::post('/menus/{menu}/approve', [MenuSubmissionController::class, 'approve'])->name('menus.approve');
-    Route::post('/menus/{menu}/reject', [MenuSubmissionController::class, 'reject'])->name('menus.reject');
     Route::get('/orders', [ManagerOrderController::class, 'index'])->name('orders.index');
     Route::post('/orders/{order}/accept', [ManagerOrderController::class, 'accept'])->name('orders.accept');
     Route::post('/orders/{order}/reject', [ManagerOrderController::class, 'reject'])->name('orders.reject');
     Route::post('/orders/{order}/process', [ManagerOrderController::class, 'process'])->name('orders.process');
     Route::post('/orders/{order}/complete', [ManagerOrderController::class, 'complete'])->name('orders.complete');
+
+    // Refund Management
+    Route::get('/refunds', [ManagerRefundController::class, 'index'])->name('refunds.index');
+    Route::post('/refunds/{refund}/approve', [ManagerRefundController::class, 'approve'])->name('refunds.approve');
+    Route::post('/refunds/{refund}/reject', [ManagerRefundController::class, 'reject'])->name('refunds.reject');
 });
 
 Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
@@ -69,6 +70,7 @@ Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(functi
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
     Route::get('/orders', [UserOrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [UserOrderController::class, 'show'])->name('orders.show');
+    Route::post('/orders/{order}/refund', [UserRefundController::class, 'store'])->name('orders.refund');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');

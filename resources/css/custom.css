@@ -1,23 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ==========================================
    KOPI NUSANTARA — Design System
    ========================================== */
 :root {
-    --color-primary: #3e1f0d;
-    --color-secondary: #6b3a2a;
-    --color-accent: #c08b5c;
-    --color-gold: #d4a855;
-    --color-background: #fdf6ed;
-    --color-surface: #f5e8d4;
-    --color-surface-alt: #edd9bc;
-    --color-text: #2c1810;
-    --color-text-muted: #6b4c3b;
-    --color-border: #dec9aa;
-    --color-success: #2e7d32;
-    --color-warning: #e65100;
-    --color-danger: #b71c1c;
-    --color-info: #01579b;
+    --color-primary: #3E1F0D;
+    --color-secondary: #6B3A2A;
+    --color-accent: #C08B5C;
+    --color-gold: #D4A855;
+    --color-background: #FDF6ED;
+    --color-surface: #F5E8D4;
+    --color-surface-alt: #EDD9BC;
+    --color-text: #2C1810;
+    --color-text-muted: #6B4C3B;
+    --color-border: #DEC9AA;
+    --color-success: #2E7D32;
+    --color-warning: #E65100;
+    --color-danger: #B71C1C;
+    --color-info: #01579B;
     --shadow-sm: 0 2px 8px rgba(62, 31, 13, 0.08);
     --shadow-md: 0 4px 20px rgba(62, 31, 13, 0.12);
     --shadow-lg: 0 8px 40px rgba(62, 31, 13, 0.18);
@@ -44,7 +44,7 @@ html {
 
 body {
     background-color: var(--color-background);
-    font-family: "Inter", "Segoe UI", sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     color: var(--color-text);
     font-size: 0.9375rem;
     line-height: 1.7;
@@ -59,14 +59,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: 'Playfair Display', Georgia, serif;
     color: var(--color-primary);
     font-weight: 700;
     line-height: 1.3;
 }
 
 .section-title {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.25rem;
     font-weight: 800;
     color: var(--color-primary);
@@ -76,12 +76,12 @@ h6 {
 }
 
 .section-title::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 60px;
     height: 3px;
     background: linear-gradient(90deg, var(--color-accent), var(--color-gold));
     border-radius: 99px;
@@ -107,21 +107,17 @@ h6 {
    NAVBAR
    ========================================== */
 .navbar {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        var(--color-secondary) 100%
-    ) !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
     box-shadow: 0 2px 20px rgba(62, 31, 13, 0.3);
     padding: 0.85rem 0;
     transition: var(--transition);
 }
 
 .navbar-brand {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 800;
     font-size: 1.5rem;
-    color: #fdf6ed !important;
+    color: #FDF6ED !important;
     letter-spacing: 0.5px;
     display: flex;
     align-items: center;
@@ -191,8 +187,8 @@ h6 {
     position: absolute;
     top: 2px;
     right: 0px;
-    background: var(--color-gold, #d4a855);
-    color: #3e1f0d;
+    background: var(--color-gold, #D4A855);
+    color: #3E1F0D;
     font-size: 0.65rem;
     font-weight: 700;
     min-width: 18px;
@@ -230,9 +226,9 @@ h6 {
 }
 
 .pagination .page-item .page-link {
-    color: var(--color-text, #3e1f0d);
-    background-color: var(--color-surface, #fffdf9);
-    border: 1px solid var(--color-border, #dec9aa);
+    color: var(--color-text, #3E1F0D);
+    background-color: var(--color-surface, #FFFDF9);
+    border: 1px solid var(--color-border, #DEC9AA);
     padding: 0.45rem 0.85rem;
     font-size: 0.875rem;
     font-weight: 500;
@@ -243,24 +239,24 @@ h6 {
 }
 
 .pagination .page-item .page-link:hover {
-    color: #3e1f0d;
-    background-color: var(--color-surface-alt, #f5e6d3);
-    border-color: var(--color-gold, #d4a855);
+    color: #3E1F0D;
+    background-color: var(--color-surface-alt, #F5E6D3);
+    border-color: var(--color-gold, #D4A855);
     transform: translateY(-1px);
 }
 
 .pagination .page-item.active .page-link {
-    color: #3e1f0d !important;
-    background: linear-gradient(135deg, #c08b5c 0%, #d4a855 100%) !important;
-    border-color: #c08b5c !important;
+    color: #3E1F0D !important;
+    background: linear-gradient(135deg, #C08B5C 0%, #D4A855 100%) !important;
+    border-color: #C08B5C !important;
     font-weight: 700;
     box-shadow: 0 3px 8px rgba(192, 139, 92, 0.3);
 }
 
 .pagination .page-item.disabled .page-link {
-    color: #a08c7d;
+    color: #A08C7D;
     background-color: rgba(0, 0, 0, 0.03);
-    border-color: var(--color-border, #dec9aa);
+    border-color: var(--color-border, #DEC9AA);
     opacity: 0.6;
     pointer-events: none;
 }
@@ -270,22 +266,19 @@ nav .small.text-muted {
     display: none !important;
 }
 
+
 /* ==========================================
    SIDEBAR
    ========================================== */
 .sidebar {
     min-height: calc(100vh - 72px);
-    background: linear-gradient(
-        180deg,
-        var(--color-surface) 0%,
-        var(--color-background) 100%
-    );
+    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%);
     border-right: 1px solid var(--color-border);
     padding: 1.5rem 1rem !important;
 }
 
 .sidebar-brand {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--color-primary);
@@ -334,11 +327,7 @@ nav .small.text-muted {
 }
 
 .sidebar .nav-link.active {
-    background: linear-gradient(
-        135deg,
-        var(--color-secondary),
-        var(--color-accent)
-    );
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
     color: #fff;
     box-shadow: 0 3px 10px rgba(107, 58, 42, 0.3);
 }
@@ -369,7 +358,7 @@ nav .small.text-muted {
     border-bottom: 1px solid var(--color-border);
     color: var(--color-primary);
     font-weight: 600;
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     padding: 1rem 1.25rem;
 }
 
@@ -380,7 +369,7 @@ nav .small.text-muted {
 .card-title {
     color: var(--color-primary);
     font-weight: 600;
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
 }
 
 /* ==========================================
@@ -395,14 +384,10 @@ nav .small.text-muted {
 }
 
 .stat-card::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        transparent 100%
-    );
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
     pointer-events: none;
 }
 
@@ -439,7 +424,7 @@ nav .small.text-muted {
 }
 
 .stat-card .stat-value {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
@@ -452,23 +437,23 @@ nav .small.text-muted {
 }
 
 .stat-gradient-brown {
-    background: linear-gradient(135deg, #3e1f0d 0%, #6b3a2a 100%);
-    color: #fdf6ed;
+    background: linear-gradient(135deg, #3E1F0D 0%, #6B3A2A 100%);
+    color: #FDF6ED;
 }
 
 .stat-gradient-amber {
-    background: linear-gradient(135deg, #7b3f00 0%, #c07728 100%);
-    color: #fdf6ed;
+    background: linear-gradient(135deg, #7B3F00 0%, #C07728 100%);
+    color: #FDF6ED;
 }
 
 .stat-gradient-green {
-    background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
-    color: #fdf6ed;
+    background: linear-gradient(135deg, #1B5E20 0%, #388E3C 100%);
+    color: #FDF6ED;
 }
 
 .stat-gradient-teal {
-    background: linear-gradient(135deg, #004d40 0%, #00897b 100%);
-    color: #fdf6ed;
+    background: linear-gradient(135deg, #004D40 0%, #00897B 100%);
+    color: #FDF6ED;
 }
 
 /* ==========================================
@@ -481,12 +466,8 @@ nav .small.text-muted {
 }
 
 .table thead {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        var(--color-secondary) 100%
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #FDF6ED;
 }
 
 .table thead th {
@@ -523,12 +504,8 @@ nav .small.text-muted {
    BUTTONS
    ========================================== */
 .btn-coffee {
-    background: linear-gradient(
-        135deg,
-        var(--color-secondary) 0%,
-        var(--color-primary) 100%
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    color: #FDF6ED;
     border: none;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -541,14 +518,10 @@ nav .small.text-muted {
 }
 
 .btn-coffee::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        transparent 100%
-    );
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
     opacity: 0;
     transition: var(--transition);
 }
@@ -575,23 +548,15 @@ nav .small.text-muted {
 }
 
 .btn-outline-coffee:hover {
-    background: linear-gradient(
-        135deg,
-        var(--color-secondary),
-        var(--color-primary)
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    color: #FDF6ED;
     border-color: transparent;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(62, 31, 13, 0.25);
 }
 
 .btn-gold {
-    background: linear-gradient(
-        135deg,
-        var(--color-gold) 0%,
-        var(--color-accent) 100%
-    );
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-accent) 100%);
     color: var(--color-primary);
     border: none;
     border-radius: var(--radius-sm);
@@ -629,7 +594,7 @@ nav .small.text-muted {
 }
 
 .form-control::placeholder {
-    color: #9e7b6a;
+    color: #9E7B6A;
 }
 
 .form-label {
@@ -661,27 +626,27 @@ nav .small.text-muted {
 }
 
 .alert-success {
-    background-color: #e8f5e9;
-    color: #1b5e20;
-    border-left: 4px solid #2e7d32;
+    background-color: #E8F5E9;
+    color: #1B5E20;
+    border-left: 4px solid #2E7D32;
 }
 
 .alert-danger {
-    background-color: #ffebee;
-    color: #b71c1c;
-    border-left: 4px solid #c62828;
+    background-color: #FFEBEE;
+    color: #B71C1C;
+    border-left: 4px solid #C62828;
 }
 
 .alert-warning {
-    background-color: #fff3e0;
-    color: #e65100;
-    border-left: 4px solid #ff6f00;
+    background-color: #FFF3E0;
+    color: #E65100;
+    border-left: 4px solid #FF6F00;
 }
 
 .alert-info {
-    background-color: #e3f2fd;
-    color: #01579b;
-    border-left: 4px solid #0277bd;
+    background-color: #E3F2FD;
+    color: #01579B;
+    border-left: 4px solid #0277BD;
 }
 
 /* ==========================================
@@ -696,24 +661,24 @@ nav .small.text-muted {
 }
 
 .badge.bg-success {
-    background-color: #2e7d32 !important;
+    background-color: #2E7D32 !important;
 }
 
 .badge.bg-warning {
-    background-color: #e65100 !important;
+    background-color: #E65100 !important;
     color: #fff !important;
 }
 
 .badge.bg-danger {
-    background-color: #b71c1c !important;
+    background-color: #B71C1C !important;
 }
 
 .badge.bg-info {
-    background-color: #0277bd !important;
+    background-color: #0277BD !important;
 }
 
 .badge.bg-secondary {
-    background-color: #6b4c3b !important;
+    background-color: #6B4C3B !important;
 }
 
 .bg-coffee {
@@ -768,7 +733,7 @@ nav .small.text-muted {
 }
 
 .menu-price {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-secondary);
@@ -818,27 +783,27 @@ nav .small.text-muted {
 }
 
 .status-pending {
-    background-color: #fff3e0;
-    color: #e65100;
+    background-color: #FFF3E0;
+    color: #E65100;
 }
 
 .status-approved,
 .status-completed,
 .status-paid {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: #E8F5E9;
+    color: #2E7D32;
 }
 
 .status-rejected,
 .status-cancelled,
 .status-failed {
-    background-color: #ffebee;
-    color: #b71c1c;
+    background-color: #FFEBEE;
+    color: #B71C1C;
 }
 
 .status-processing {
-    background-color: #e3f2fd;
-    color: #01579b;
+    background-color: #E3F2FD;
+    color: #01579B;
 }
 
 /* ==========================================
@@ -867,18 +832,14 @@ nav .small.text-muted {
 }
 
 .page-item.active .page-link {
-    background: linear-gradient(
-        135deg,
-        var(--color-secondary),
-        var(--color-primary)
-    );
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
     border-color: transparent;
-    color: #fdf6ed;
+    color: #FDF6ED;
 }
 
 .page-item.disabled .page-link {
     background-color: var(--color-background);
-    color: #9e7b6a;
+    color: #9E7B6A;
     border-color: var(--color-border);
 }
 
@@ -886,27 +847,22 @@ nav .small.text-muted {
    FOOTER
    ========================================== */
 .footer {
-    background: linear-gradient(
-        135deg,
-        #2c1810 0%,
-        var(--color-primary) 50%,
-        #4a2618 100%
-    ) !important;
-    color: #edd9bc;
+    background: linear-gradient(135deg, #2C1810 0%, var(--color-primary) 50%, #4A2618 100%) !important;
+    color: #EDD9BC;
     padding: 3rem 0 1.5rem;
     margin-top: auto;
 }
 
 .footer-brand {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     font-weight: 800;
-    color: #fdf6ed;
+    color: #FDF6ED;
     margin-bottom: 0.5rem;
 }
 
 .footer-tagline {
-    color: #c08b5c;
+    color: #C08B5C;
     font-size: 0.875rem;
     font-style: italic;
     margin-bottom: 1.25rem;
@@ -914,7 +870,7 @@ nav .small.text-muted {
 
 .footer h6 {
     color: var(--color-gold);
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -923,7 +879,7 @@ nav .small.text-muted {
 }
 
 .footer a {
-    color: #c8a882;
+    color: #C8A882;
     text-decoration: none;
     font-size: 0.875rem;
     transition: var(--transition);
@@ -932,12 +888,12 @@ nav .small.text-muted {
 }
 
 .footer a:hover {
-    color: #fdf6ed;
+    color: #FDF6ED;
     transform: translateX(3px);
 }
 
 .footer p {
-    color: #c8a882;
+    color: #C8A882;
     font-size: 0.875rem;
 }
 
@@ -948,7 +904,7 @@ nav .small.text-muted {
 
 .footer-bottom {
     font-size: 0.8rem;
-    color: #9e7b6a;
+    color: #9E7B6A;
 }
 
 .footer-social a {
@@ -959,7 +915,7 @@ nav .small.text-muted {
     height: 36px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
-    color: #edd9bc;
+    color: #EDD9BC;
     font-size: 1rem;
     transition: var(--transition);
     margin-bottom: 0;
@@ -981,7 +937,7 @@ nav .small.text-muted {
 }
 
 .auth-visual {
-    background: linear-gradient(160deg, #2c1810 0%, #3e1f0d 40%, #6b3a2a 100%);
+    background: linear-gradient(160deg, #2C1810 0%, #3E1F0D 40%, #6B3A2A 100%);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -992,10 +948,10 @@ nav .small.text-muted {
 }
 
 .auth-visual::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
-    background-image: url("/images/hero-bg.jpg");
+    background-image: url('/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.15;
@@ -1021,7 +977,7 @@ nav .small.text-muted {
 }
 
 .auth-logo {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--color-primary);
@@ -1038,24 +994,20 @@ nav .small.text-muted {
    HERO SECTION
    ========================================== */
 .hero-section {
-    background: linear-gradient(160deg, #fdf6ed 0%, #f5e8d4 100%);
+    background: linear-gradient(160deg, #FDF6ED 0%, #F5E8D4 100%);
     padding: 2rem 0;
     position: relative;
     overflow: hidden;
 }
 
 .hero-section::before {
-    content: "";
+    content: '';
     position: absolute;
     top: -50%;
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(
-        circle,
-        rgba(192, 139, 92, 0.08) 0%,
-        transparent 70%
-    );
+    background: radial-gradient(circle, rgba(192, 139, 92, 0.08) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -1075,7 +1027,7 @@ nav .small.text-muted {
 }
 
 .hero-title {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.15;
@@ -1103,7 +1055,7 @@ nav .small.text-muted {
 }
 
 .hero-image-wrap::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     border-radius: var(--radius-xl);
@@ -1142,20 +1094,16 @@ nav .small.text-muted {
 }
 
 .modal-header {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary),
-        var(--color-secondary)
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #FDF6ED;
     border-radius: 0;
     padding: 1.25rem 1.5rem;
 }
 
 .modal-title {
-    color: #fdf6ed;
+    color: #FDF6ED;
     font-weight: 700;
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .btn-close {
@@ -1184,7 +1132,7 @@ nav .small.text-muted {
 }
 
 .btn-loading::after {
-    content: "";
+    content: '';
     display: inline-block;
     width: 14px;
     height: 14px;
@@ -1376,12 +1324,8 @@ nav .small.text-muted {
 
 .order-card-header,
 .checkout-card-header {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        var(--color-secondary) 100%
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #FDF6ED;
     padding: 1.25rem 1.5rem;
     display: flex;
     align-items: center;
@@ -1390,8 +1334,8 @@ nav .small.text-muted {
 
 .order-card-header h5,
 .checkout-card-header h5 {
-    color: #fdf6ed;
-    font-family: "Playfair Display", serif;
+    color: #FDF6ED;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin: 0;
     font-size: 1.2rem;
@@ -1402,11 +1346,7 @@ nav .small.text-muted {
 }
 
 .order-table thead {
-    background: linear-gradient(
-        135deg,
-        rgba(62, 31, 13, 0.08) 0%,
-        rgba(107, 58, 42, 0.12) 100%
-    );
+    background: linear-gradient(135deg, rgba(62, 31, 13, 0.08) 0%, rgba(107, 58, 42, 0.12) 100%);
     border-bottom: 2px solid var(--color-border);
 }
 
@@ -1445,17 +1385,13 @@ nav .small.text-muted {
     padding: 0.35rem 0.65rem;
     border-radius: var(--radius-sm);
     font-weight: 600;
-    font-family: "Inter", monospace;
+    font-family: 'Inter', monospace;
     font-size: 0.85rem;
 }
 
 .btn-coffee-sm {
-    background: linear-gradient(
-        135deg,
-        var(--color-secondary) 0%,
-        var(--color-primary) 100%
-    );
-    color: #fdf6ed;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    color: #FDF6ED;
     border: none;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -1484,11 +1420,7 @@ nav .small.text-muted {
 }
 
 .checkout-summary-box {
-    background: linear-gradient(
-        135deg,
-        var(--color-surface-alt) 0%,
-        var(--color-surface) 100%
-    );
+    background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 1.5rem;
@@ -1504,8 +1436,17 @@ nav .small.text-muted {
 }
 
 .checkout-total-price {
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--color-primary);
+}
+
+/* Modal z-index fix */
+.modal {
+    z-index: 1065 !important;
+}
+
+.modal-backdrop {
+    z-index: 1055 !important;
 }

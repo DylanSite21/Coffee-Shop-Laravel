@@ -68,18 +68,4 @@ class MenuSubmissionController extends Controller
 
         return redirect()->route('manager.menus.index')->with('success', 'Menu berhasil dihapus.');
     }
-
-    public function approve(Menu $menu)
-    {
-        $menu->update(['status' => 'approved']);
-
-        return back()->with('success', 'Status menu berhasil disetujui (Approved).');
-    }
-
-    public function reject(Menu $menu)
-    {
-        $menu->update(['status' => 'rejected']);
-
-        return back()->with('success', 'Status menu berhasil ditolak (Rejected).');
-    }
 }

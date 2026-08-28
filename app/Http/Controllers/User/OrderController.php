@@ -13,7 +13,7 @@ class OrderController extends Controller
         $search = $request->input('search');
         $status = $request->input('status');
 
-        $orders = Order::with('orderDetails.menu')
+        $orders = Order::with('orderDetails.menu', 'refund')
             ->where('user_id', auth()->id())
             ->when($search, fn($q) => $q->where('order_number', 'like', "%{$search}%"))
             ->when($status, fn($q) => $q->where('status', $status))
@@ -29,7 +29,7 @@ class OrderController extends Controller
             abort(403);
         }
 
-        $order->load('orderDetails.menu', 'payment');
+        $order->load('orderDetails.menu', 'payment', 'refund');
         return view('user.orders.show', compact('order'));
     }
 }

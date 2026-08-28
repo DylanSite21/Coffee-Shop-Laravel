@@ -29,6 +29,7 @@
                             'processing' => 'status-processing',
                             'completed' => 'status-completed',
                             'cancelled' => 'status-cancelled',
+                            'refunded' => 'status-refunded',
                             default => 'status-pending'
                         };
                     @endphp
@@ -47,7 +48,14 @@
                     </div>
                     <div class="d-flex justify-content-between py-2 border-bottom border-border">
                         <span class="text-muted-custom">Metode Pembayaran</span>
-                        <span class="fw-semibold text-brown">{{ strtoupper($order->payment_method ?? '-') }}</span>
+                        <span class="fw-semibold text-brown">
+                            {{ strtoupper($order->payment_method ?? '-') }}
+                            @if($order->payment_method === 'qris')
+                                <span class="refund-badge-yes ms-1">Bisa Refund</span>
+                            @else
+                                <span class="refund-badge-no ms-1">Tidak Bisa Refund</span>
+                            @endif
+                        </span>
                     </div>
                     <div class="d-flex justify-content-between py-2">
                         <span class="text-muted-custom">Total Tagihan</span>
@@ -78,6 +86,84 @@
             </div>
         </div>
     </div>
+
+    {{-- Refund Section --}}
+    @if($order->refund)
+        <div class="refund-section mb-4">
+            <div class="refund-section-header">
+                <i class="bi bi-arrow-counterclockwise"></i> Status Pengajuan Refund
+            </div>
+            <div class="refund-status-card">
+                <div class="refund-status-info">
+                    <div><strong>Alasan Refund:</strong> {{ $order->refund->reason }}</div>
+                    <div class="text-muted-custom small mt-1">
+                        Diajukan pada: {{ $order->refund->created_at->format('d M Y, H:i') }} WIB
+                    </div>
+                    @if($order->refund->status === 'rejected' && $order->refund->rejected_reason)
+                        <div class="text-danger small mt-1">
+                            <strong>Alasan Penolakan:</strong> {{ $order->refund->rejected_reason }}
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    @if($order->refund->status === 'pending')
+                        <span class="status-badge status-pending">
+                            <i class="bi bi-hourglass-split me-1"></i>Menunggu Persetujuan Manager
+                        </span>
+                    @elseif($order->refund->status === 'approved')
+                        <span class="status-badge status-approved">
+                            <i class="bi bi-check-circle-fill me-1"></i>Refund Disetujui (Dana Dikembalikan)
+                        </span>
+                    @elseif($order->refund->status === 'rejected')
+                        <span class="status-badge status-rejected">
+                            <i class="bi bi-x-circle-fill me-1"></i>Refund Ditolak
+                        </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    @elseif($order->payment_method === 'qris' && $order->status === 'pending')
+        <div class="refund-section mb-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                <div>
+                    <div class="refund-section-header mb-1">
+                        <i class="bi bi-shield-check"></i> Pengajuan Refund (QRIS)
+                    </div>
+                    <small class="text-muted-custom">
+                        Pesanan ini belum dikonfirmasi oleh manager. Anda dapat mengajukan refund jika ingin membatalkan pesanan.
+                    </small>
+                </div>
+                <button type="button" class="btn btn-outline-danger btn-sm px-3 py-2 fw-semibold" id="toggleRefundBtn" onclick="toggleRefundForm()">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>Ajukan Refund
+                </button>
+            </div>
+
+            {{-- Inline Refund Form --}}
+            <div id="inlineRefundContainer" style="display: none;" class="mt-3 pt-3 border-top border-border">
+                <form action="{{ route('user.orders.refund', $order) }}" method="POST" class="p-3 rounded" style="background-color: #fdf6ed; border: 1.5px solid #dec9aa;">
+                    @csrf
+                    <div class="alert alert-warning mb-3 py-2 small">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                        Pengajuan refund sebesar <strong>Rp {{ number_format($order->total, 0, ',', '.') }}</strong> akan dikirimkan ke manager untuk ditinjau.
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-brown small">
+                            Alasan Pengajuan Refund <span class="text-danger">*</span>
+                        </label>
+                        <textarea name="reason" class="form-control" rows="3" placeholder="Tuliskan alasan pengajuan refund pesanan Anda di sini..." required style="background-color: #fff;"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="toggleRefundForm()">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm px-3 fw-semibold">
+                            <i class="bi bi-send me-1"></i>Kirim Pengajuan Refund
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endif
 
     {{-- Order Items Table --}}
     <div class="order-table-card">
@@ -134,4 +220,22 @@
         </div>
     </div>
 </div>
+
+<script>
+function toggleRefundForm() {
+    const container = document.getElementById('inlineRefundContainer');
+    const btn = document.getElementById('toggleRefundBtn');
+    if (!container) return;
+
+    if (container.style.display === 'none' || container.style.display === '') {
+        container.style.display = 'block';
+        if (btn) btn.style.display = 'none';
+        const textarea = container.querySelector('textarea[name="reason"]');
+        if (textarea) textarea.focus();
+    } else {
+        container.style.display = 'none';
+        if (btn) btn.style.display = 'inline-flex';
+    }
+}
+</script>
 @endsection

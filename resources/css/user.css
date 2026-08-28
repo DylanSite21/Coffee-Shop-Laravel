@@ -1057,3 +1057,292 @@ body {
     font-weight: 700;
     color: #6f4e37;
 }
+
+/* ==========================================
+   MENU DETAIL PAGE
+   ========================================== */
+.menu-detail-card {
+    background-color: #eadbc8;
+    border-radius: 1rem;
+    border: 1px solid #d7ccc8;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(62, 31, 13, 0.08);
+}
+
+.menu-detail-card:hover {
+    transform: none;
+    box-shadow: 0 2px 12px rgba(62, 31, 13, 0.08);
+}
+
+.menu-detail-image {
+    width: 100%;
+    max-height: 340px;
+    overflow: hidden;
+    background: #f5e6cc;
+}
+
+.menu-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-detail-body {
+    padding: 1.75rem;
+}
+
+.menu-detail-category {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c08b5c;
+    background: rgba(192, 139, 92, 0.12);
+    padding: 0.3em 0.75em;
+    border-radius: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.menu-detail-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #3e1f0d;
+    margin-bottom: 0.5rem;
+}
+
+.menu-detail-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #6b3a2a;
+    margin-bottom: 1rem;
+}
+
+.menu-detail-desc {
+    color: #6b4c3b;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    border-top: 1px solid #d7ccc8;
+    padding-top: 1rem;
+}
+
+.menu-detail-desc p {
+    margin-bottom: 0;
+}
+
+.menu-detail-form .form-control {
+    max-width: 100px;
+    text-align: center;
+    border-color: #d7ccc8;
+    background-color: #fdf6ed;
+}
+
+.menu-detail-form .form-control:focus {
+    border-color: #c08b5c;
+    box-shadow: 0 0 0 0.2rem rgba(192, 139, 92, 0.25);
+}
+
+/* ==========================================
+   CHECKOUT — PAYMENT NOTE & QRIS MODAL
+   ========================================== */
+.payment-info-note {
+    background: linear-gradient(135deg, #fdf6ed 0%, #f5e8d4 100%);
+    border: 1px solid #dec9aa;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #3e1f0d;
+}
+
+.payment-info-note .note-title {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6b3a2a;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.payment-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+}
+
+.payment-info-item .info-icon {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.payment-info-item .info-text {
+    line-height: 1.5;
+}
+
+.payment-info-item .info-text strong {
+    color: #3e1f0d;
+}
+
+.refund-badge-yes {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    padding: 0.15em 0.5em;
+    border-radius: 0.2rem;
+}
+
+.refund-badge-no {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #c62828;
+    background-color: #ffebee;
+    padding: 0.15em 0.5em;
+    border-radius: 0.2rem;
+}
+
+/* QRIS Modal */
+.qris-modal .modal-content {
+    background-color: #fdf6ed;
+    border: 1px solid #d7ccc8;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(62, 31, 13, 0.25);
+}
+
+.qris-modal .modal-header {
+    border-bottom: 1px solid #dec9aa;
+    background: linear-gradient(135deg, #3e1f0d 0%, #6b3a2a 100%);
+    color: #fdf6ed;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1.25rem 1.5rem;
+}
+
+.qris-modal .modal-header .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.qris-modal .modal-header .btn-close {
+    filter: invert(1);
+}
+
+.qris-modal .modal-body {
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.qris-qr-wrapper {
+    background: #fff;
+    border: 2px solid #d7ccc8;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(62, 31, 13, 0.08);
+}
+
+.qris-qr-wrapper img {
+    width: 220px;
+    height: 220px;
+}
+
+.qris-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #3e1f0d;
+    margin-bottom: 0.25rem;
+}
+
+.qris-instruction {
+    color: #6b4c3b;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+}
+
+.qris-timer {
+    font-size: 0.8rem;
+    color: #c08b5c;
+    font-weight: 600;
+}
+
+.qris-modal .modal-footer {
+    border-top: 1px solid #dec9aa;
+    padding: 1rem 1.5rem;
+    justify-content: center;
+}
+
+/* ==========================================
+   REFUND UI (User Order Detail)
+   ========================================== */
+.refund-section {
+    background: linear-gradient(135deg, #fdf6ed 0%, #f5e8d4 100%);
+    border: 1px solid #dec9aa;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.refund-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #3e1f0d;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.refund-section-header i {
+    color: #c08b5c;
+    font-size: 1.1rem;
+}
+
+.refund-status-card {
+    background: #fff;
+    border: 1px solid #d7ccc8;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.refund-status-info {
+    font-size: 0.88rem;
+    color: #6b4c3b;
+}
+
+.refund-status-info strong {
+    color: #3e1f0d;
+}
+
+.status-refunded {
+    background-color: #e8eaf6;
+    color: #283593;
+}
+
+.status-refund_pending {
+    background-color: #fff8e1;
+    color: #f57f17;
+}
+
+.status-refund_rejected {
+    background-color: #ffebee;
+    color: #c62828;
+}

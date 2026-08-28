@@ -13,9 +13,18 @@ class OrderController extends Controller
         $search = $request->input('search');
         $status = $request->input('status');
 
-        $orders = Order::with(['user', 'orderDetails.menu'])
+        $orders = Order::with(['user', 'orderDetails.menu', 'refund'])
             ->when($search, fn($q) => $q->where('order_number', 'like', "%{$search}%")->orWhereHas('user', fn($q2) => $q2->where('name', 'like', "%{$search}%")))
-            ->when($status, fn($q) => $q->where('status', $status))
+            ->when($status, function($q, $status) {
+                if ($status === 'refund_pending') {
+                    $q->whereHas('refund', fn($rq) => $rq->where('status', 'pending'));
+                } elseif ($status === 'normal') {
+                    $q->whereDoesntHave('refund', fn($rq) => $rq->where('status', 'pending'))->where('status', '!=', 'refunded');
+                } else {
+                    $q->where('status', $status);
+                }
+            })
+            ->latest()
             ->paginate(10);
 
         return view('manager.orders.index', compact('orders', 'search', 'status'));
@@ -25,6 +34,11 @@ class OrderController extends Controller
     {
         if ($order->status !== 'pending') {
             return back()->with('error', 'Pesanan ini tidak dapat diterima.');
+        }
+
+        // If order has pending refund, alert manager
+        if ($order->refund && $order->refund->status === 'pending') {
+            return back()->with('error', 'Pesanan ini memiliki pengajuan refund aktif. Silakan setujui/tolak refund terlebih dahulu.');
         }
 
         $order->update(['status' => 'processing']);
