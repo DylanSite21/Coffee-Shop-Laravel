@@ -72,6 +72,12 @@
                     <i class="bi bi-receipt"></i> Kelola Pesanan
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('manager.refunds.*') ? 'active' : '' }}"
+                    href="{{ route('manager.refunds.index') }}">
+                    <i class="bi bi-arrow-counterclockwise"></i> Kelola Refund
+                </a>
+            </li>
         @elseif($role === 'user')
             <li><span class="sidebar-section-label">Utama</span></li>
             <li class="nav-item">

@@ -277,6 +277,7 @@ body {
 .status-cancelled,
 .status-failed     { background-color: #FFEBEE; color: #B71C1C; }
 .status-processing { background-color: #E3F2FD; color: #01579B; }
+.status-refunded   { background-color: #EDE7F6; color: #512DA8; }
 
 .action-btns { display: flex; gap: 0.4rem; }
 

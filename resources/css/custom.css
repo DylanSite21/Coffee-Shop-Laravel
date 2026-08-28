@@ -1441,3 +1441,12 @@ nav .small.text-muted {
     font-weight: 800;
     color: var(--color-primary);
 }
+
+/* Modal z-index fix */
+.modal {
+    z-index: 1065 !important;
+}
+
+.modal-backdrop {
+    z-index: 1055 !important;
+}

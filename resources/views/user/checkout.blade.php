@@ -10,7 +10,7 @@
         <p class="text-muted-custom mb-0">Lengkapi informasi pengiriman dan tentukan metode pembayaran Anda.</p>
     </div>
 
-    <form method="POST" action="{{ route('user.checkout.store') }}">
+    <form method="POST" action="{{ route('user.checkout.store') }}" id="checkoutForm">
         @csrf
         <div class="row g-4">
             {{-- Left Column: Shipping & Payment Form --}}
@@ -38,7 +38,33 @@
                             <label class="form-label">
                                 <i class="bi bi-credit-card-2-front me-1 text-coffee"></i>Metode Pembayaran
                             </label>
-                            <select name="payment_method" class="form-select" required>
+
+                            {{-- Payment Info Note --}}
+                            <div class="payment-info-note">
+                                <div class="note-title">
+                                    <i class="bi bi-info-circle-fill"></i> Informasi Penting Pembayaran
+                                </div>
+                                <div class="payment-info-item">
+                                    <span class="info-icon">💵</span>
+                                    <div class="info-text">
+                                        <strong>Cash / Tunai</strong> — Pembayaran di tempat. <span class="refund-badge-no">Tidak bisa refund</span>
+                                    </div>
+                                </div>
+                                <div class="payment-info-item">
+                                    <span class="info-icon">📱</span>
+                                    <div class="info-text">
+                                        <strong>QRIS</strong> — Scan & bayar instan. <span class="refund-badge-yes">Bisa refund</span> jika disetujui manager.
+                                    </div>
+                                </div>
+                                <div class="payment-info-item">
+                                    <span class="info-icon">🏦</span>
+                                    <div class="info-text">
+                                        <strong>Bank Transfer</strong> — Transfer via rekening bank. <span class="refund-badge-no">Tidak bisa refund</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <select name="payment_method" class="form-select" id="paymentMethodSelect" required>
                                 <option value="">Pilih Metode Pembayaran</option>
                                 <option value="cash" {{ old('payment_method') == 'cash' ? 'selected' : '' }}>💵 Cash / Tunai</option>
                                 <option value="qris" {{ old('payment_method') == 'qris' ? 'selected' : '' }}>📱 QRIS (Instant Scan)</option>
@@ -87,12 +113,12 @@
                             </div>
                             <div class="checkout-total-row">
                                 <span class="fw-bold text-brown fs-5">Total Pembayaran</span>
-                                <span class="checkout-total-price">Rp {{ number_format($cart->total, 0, ',', '.') }}</span>
+                                <span class="checkout-total-price" id="checkoutTotalPrice">Rp {{ number_format($cart->total, 0, ',', '.') }}</span>
                             </div>
                         </div>
 
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-coffee w-100 py-3 mb-2 fw-bold">
+                            <button type="submit" class="btn btn-coffee w-100 py-3 mb-2 fw-bold" id="checkoutSubmitBtn">
                                 <i class="bi bi-bag-check-fill me-2"></i>Konfirmasi & Buat Pesanan
                             </button>
                             <a href="{{ route('user.cart.index') }}" class="btn btn-outline-coffee w-100">
@@ -104,5 +130,35 @@
             </div>
         </div>
     </form>
+</div>
+
+{{-- QRIS Payment Modal --}}
+<div class="modal fade qris-modal" id="qrisPaymentModal" tabindex="-1" aria-labelledby="qrisPaymentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="qrisPaymentModalLabel">
+                    <i class="bi bi-qr-code me-2"></i>Pembayaran QRIS
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="qris-qr-wrapper">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=KOPI-NUSANTARA-QRIS-{{ strtoupper(uniqid()) }}&color=3e1f0d" alt="QRIS Barcode" id="qrisImage">
+                </div>
+                <div class="qris-amount" id="qrisAmountDisplay">Rp {{ number_format($cart->total, 0, ',', '.') }}</div>
+                <p class="qris-instruction">
+                    Scan QR Code di atas menggunakan aplikasi e-wallet atau mobile banking Anda untuk menyelesaikan pembayaran.
+                </p>
+                <div class="qris-timer">
+                    <i class="bi bi-clock me-1"></i>Selesaikan pembayaran sebelum menutup halaman ini
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-coffee px-4 py-2 fw-bold" id="qrisConfirmBtn">
+                    <i class="bi bi-check-circle me-2"></i>OK, Sudah Bayar
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
