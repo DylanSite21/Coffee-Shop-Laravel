@@ -3,94 +3,109 @@
 @section('title', 'Pengajuan Menu')
 
 @section('content')
-<div class="manager-page fade-in-up">
-    <div class="page-header-bar">
-        <div class="page-title-bar">
-            <div class="page-title-icon">
-                <i class="bi bi-cup-hot"></i>
+    <div class="manager-page fade-in-up">
+        <div class="page-header-bar">
+            <div class="page-title-bar">
+                <div class="page-title-icon">
+                    <i class="bi bi-cup-hot"></i>
+                </div>
+                <h2>Daftar Pengajuan Menu</h2>
             </div>
-            <h2>Daftar Pengajuan Menu</h2>
-        </div>
-        <a href="{{ route('manager.menus.create') }}" class="btn-primary-solid">
-            <i class="bi bi-plus-lg"></i>
-            Tambah Menu
-        </a>
-    </div>
-
-    <div class="menu-table-card">
-        <div class="menu-toolbar">
-            <form method="GET" action="{{ route('manager.menus.index') }}" class="menu-search-form">
-                <input type="text" name="search" class="form-control" placeholder="Cari menu..." value="{{ $search }}">
-                <button type="submit" class="btn-primary-solid">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
+            <a href="{{ route('manager.menus.create') }}" class="btn-primary-solid">
+                <i class="bi bi-plus-lg"></i>
+                Tambah Menu
+            </a>
         </div>
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Gambar</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Harga</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($menus as $menu)
+        <div class="menu-table-card">
+            <div class="menu-toolbar">
+                <form method="GET" action="{{ route('manager.menus.index') }}" class="menu-search-form">
+                    <input type="text" name="search" class="form-control" placeholder="Cari menu..."
+                        value="{{ $search }}">
+                    <button type="submit" class="btn-primary-solid">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <img src="{{ $menu->image ? asset('storage/' . $menu->image) : 'https://via.placeholder.com/100' }}" alt="{{ $menu->name }}" class="menu-thumb">
-                            </td>
-                            <td><strong>{{ $menu->name }}</strong></td>
-                            <td>{{ $menu->category->name ?? '-' }}</td>
-                            <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
-                            <td>
-                                <span class="status-badge status-{{ $menu->status }}">
-                                    {{ ucfirst($menu->status) }}
-                                </span>
-                            </td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="{{ route('manager.menus.edit', $menu) }}" class="btn-icon btn-icon-edit" title="Edit">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('manager.menus.destroy', $menu) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus?')">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" class="btn-icon btn-icon-delete" title="Hapus">
-                                            <i class="bi bi-trash3"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
+                            <th>No</th>
+                            <th>Gambar</th>
+                            <th>Nama</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7">
-                                <div class="empty-state">
-                                    <div class="empty-state-icon">
-                                        <i class="bi bi-inbox"></i>
+                    </thead>
+                    <tbody>
+                        @forelse($menus as $menu)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($menu->image)
+                                        @if (file_exists(public_path('storage/' . $menu->image)))
+                                            <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}"
+                                                class="menu-thumb">
+                                        @elseif (file_exists(public_path('images/' . $menu->image)))
+                                            <img src="{{ asset('images/' . $menu->image) }}" alt="{{ $menu->name }}"
+                                                class="menu-thumb">
+                                        @endif
+                                    @else
+                                        <div class="no-image">
+                                            <i class="bi bi-cup-hot"></i>
+                                        </div>
+                                    @endif
+                                </td>
+                                <td><strong>{{ $menu->name }}</strong></td>
+                                <td>{{ $menu->category->name ?? '-' }}</td>
+                                <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
+                                <td>
+                                    <span class="status-badge status-{{ $menu->status }}">
+                                        {{ ucfirst($menu->status) }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-btns">
+                                        <a href="{{ route('manager.menus.edit', $menu) }}" class="btn-icon btn-icon-edit"
+                                            title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('manager.menus.destroy', $menu) }}" method="POST"
+                                            class="d-inline" onsubmit="return confirm('Yakin hapus?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn-icon btn-icon-delete" title="Hapus">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </form>
                                     </div>
-                                    <h5 class="text-coffee mb-2">Tidak ada data</h5>
-                                    <p class="text-muted-custom">Belum ada pengajuan menu.</p>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-
-        @if($menus->hasPages())
-            <div class="pagination-container d-flex justify-content-center mt-4">
-                {{ $menus->links() }}
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <div class="empty-state-icon">
+                                            <i class="bi bi-inbox"></i>
+                                        </div>
+                                        <h5 class="text-coffee mb-2">Tidak ada data</h5>
+                                        <p class="text-muted-custom">Belum ada pengajuan menu.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
-        @endif
+
+            @if ($menus->hasPages())
+                <div class="pagination-container d-flex justify-content-center mt-4">
+                    {{ $menus->links() }}
+                </div>
+            @endif
+        </div>
     </div>
-</div>
 @endsection
