@@ -4,7 +4,11 @@
         {{-- Gambar Menu --}}
         <div class="menu-card-image">
             @if ($menu->image)
-                <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="card-img-top">
+                @if (file_exists(public_path('storage/' . $menu->image)))
+                    <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="card-img-top">
+                @elseif (file_exists(public_path('images/' . $menu->image)))
+                    <img src="{{ asset('images/' . $menu->image) }}" alt="{{ $menu->name }}" class="card-img-top">
+                @endif
             @else
                 <div class="no-image">
                     <i class="bi bi-cup-hot"></i>

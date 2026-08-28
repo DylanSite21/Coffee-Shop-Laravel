@@ -10,13 +10,13 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         $coffeeMenus = [
-            ['name' => 'Espresso',          'price' => 15000, 'description' => 'Kopi hitam pekat dengan crema sempurna, diseduh dari biji pilihan robusta Flores. Rasa kuat dan bold untuk pecinta kopi sejati.', 'status' => 'approved'],
-            ['name' => 'Americano',          'price' => 18000, 'description' => 'Espresso double shot yang diencerkan dengan air panas berkualitas. Rasa bersih dan clean, cocok untuk dinikmati sepanjang hari.', 'status' => 'approved'],
-            ['name' => 'Cappuccino',         'price' => 22000, 'description' => 'Kombinasi espresso, susu kukus, dan microfoam lembut dalam porsi seimbang. Klasik yang tak pernah salah, dengan sedikit taburan bubuk coklat.', 'status' => 'approved'],
-            ['name' => 'Cafe Latte',         'price' => 23000, 'description' => 'Espresso dengan susu kukus yang creamy dan lembut. Tekstur smooth dan rasa yang ringan, pilihan populer di Kopi Nusantara.', 'status' => 'approved'],
-            ['name' => 'Caramel Macchiato', 'price' => 28000, 'description' => 'Lapisan vanilla syrup, susu kukus, espresso, dan drizzle karamel manis. Perpaduan sempurna antara manis dan pahit yang memanjakan lidah.', 'status' => 'approved'],
-            ['name' => 'Mocha',             'price' => 26000, 'description' => 'Espresso bertemu coklat Belgian premium dengan susu kukus. Sensasi bittersweet yang kaya, cocok untuk pecinta coklat dan kopi.', 'status' => 'approved'],
-            ['name' => 'Vanilla Latte',     'price' => 25000, 'description' => 'Latte premium dengan sentuhan vanilla Madagascar yang lembut dan wangi. Manis alami yang menenangkan, pilihan favorit pelanggan setia kami.', 'status' => 'approved'],
+            ['name' => 'Espresso',          'price' => 15000, 'description' => 'Kopi hitam pekat dengan crema sempurna, diseduh dari biji pilihan robusta Flores. Rasa kuat dan bold untuk pecinta kopi sejati.', 'status' => 'approved', 'image' => 'Espresso.jpg'],
+            ['name' => 'Americano',          'price' => 18000, 'description' => 'Espresso double shot yang diencerkan dengan air panas berkualitas. Rasa bersih dan clean, cocok untuk dinikmati sepanjang hari.', 'status' => 'approved', 'image' => 'Americano.jpg'],
+            ['name' => 'Cappuccino',         'price' => 22000, 'description' => 'Kombinasi espresso, susu kukus, dan microfoam lembut dalam porsi seimbang. Klasik yang tak pernah salah, dengan sedikit taburan bubuk coklat.', 'status' => 'approved', 'image' => 'Cappuccino.jpg'],
+            ['name' => 'Cafe Latte',         'price' => 23000, 'description' => 'Espresso dengan susu kukus yang creamy dan lembut. Tekstur smooth dan rasa yang ringan, pilihan populer di Kopi Nusantara.', 'status' => 'approved', 'image' => 'Cafe Latte.jpg'],
+            ['name' => 'Caramel Macchiato', 'price' => 28000, 'description' => 'Lapisan vanilla syrup, susu kukus, espresso, dan drizzle karamel manis. Perpaduan sempurna antara manis dan pahit yang memanjakan lidah.', 'status' => 'approved', 'image' => 'Caramel Macchiato.jpg'],
+            ['name' => 'Mocha',             'price' => 26000, 'description' => 'Espresso bertemu coklat Belgian premium dengan susu kukus. Sensasi bittersweet yang kaya, cocok untuk pecinta coklat dan kopi.', 'status' => 'approved', 'image' => 'Mocha.jpg'],
+            ['name' => 'Vanilla Latte',     'price' => 25000, 'description' => 'Latte premium dengan sentuhan vanilla Madagascar yang lembut dan wangi. Manis alami yang menenangkan, pilihan favorit pelanggan setia kami.', 'status' => 'approved', 'image' => 'Vanilla Latte.jpg'],
         ];
 
         $nonCoffeeMenus = [
@@ -79,4 +79,3 @@ class MenuSeeder extends Seeder
         }
     }
 }
-

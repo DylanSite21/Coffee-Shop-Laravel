@@ -1003,6 +1003,7 @@ body {
 
 .menu-card-image img {
     width: 100%;
+    min-height: 220px;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
@@ -1105,7 +1106,7 @@ body {
 }
 
 .menu-detail-name {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.5rem;
     font-weight: 800;
     color: #3e1f0d;
@@ -1113,7 +1114,7 @@ body {
 }
 
 .menu-detail-price {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.35rem;
     font-weight: 700;
     color: #6b3a2a;
@@ -1231,7 +1232,7 @@ body {
 }
 
 .qris-modal .modal-header .modal-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
 }
 
@@ -1260,7 +1261,7 @@ body {
 }
 
 .qris-amount {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.5rem;
     font-weight: 800;
     color: #3e1f0d;
