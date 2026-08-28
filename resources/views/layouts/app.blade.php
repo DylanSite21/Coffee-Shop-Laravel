@@ -42,7 +42,7 @@
                 @endauth
 
                 <main
-                    class="@auth col-md-9 ms-sm-auto col-lg-10 py-4 px-2 overflow-hidden @else col-12 py-4 overflow-hidden @endauth"
+                    class="@auth col-md-9 ms-sm-auto col-lg-10  px-2 overflow-hidden @else col-12 overflow-hidden @endauth"
                     style="min-width: 0;">
                     @if (auth()->check())
                         <div
