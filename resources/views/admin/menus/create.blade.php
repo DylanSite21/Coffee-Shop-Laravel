@@ -31,6 +31,10 @@
                 <input type="number" name="price" class="form-control" value="{{ old('price') }}" required>
             </div>
             <div class="mb-3">
+                <label class="form-label">Stok</label>
+                <input type="number" name="stock" class="form-control" value="{{ old('stock', 0) }}" min="0" required>
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Gambar</label>
                 <input type="file" name="image" class="form-control" onchange="previewImage(this, 'imagePreview')">
                 <img id="imagePreview" class="image-preview mt-2" src="#" alt="Preview" style="display: none;">

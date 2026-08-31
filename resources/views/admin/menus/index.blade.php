@@ -36,6 +36,7 @@
                         <th>Nama</th>
                         <th>Kategori</th>
                         <th>Harga</th>
+                        <th>Stok</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -50,6 +51,17 @@
                             <td><strong>{{ $menu->name }}</strong></td>
                             <td>{{ $menu->category->name ?? '-' }}</td>
                             <td>Rp {{ number_format($menu->price, 0, ',', '.') }}</td>
+                            <td>
+                                @if($menu->stock > 0)
+                                    <span class="badge bg-success-subtle text-success border border-success px-2 py-1">
+                                        <i class="bi bi-box-seam me-1"></i>{{ $menu->stock }}
+                                    </span>
+                                @else
+                                    <span class="badge bg-danger-subtle text-danger border border-danger px-2 py-1">
+                                        <i class="bi bi-x-circle me-1"></i>Habis (0)
+                                    </span>
+                                @endif
+                            </td>
                             <td>
                                 <span class="status-badge status-{{ $menu->status }}">
                                     {{ ucfirst($menu->status) }}
@@ -71,7 +83,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7">
+                            <td colspan="8">
                                 <div class="empty-state">
                                     <div class="empty-state-icon">
                                         <i class="bi bi-inbox"></i>
