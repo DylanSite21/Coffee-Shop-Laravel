@@ -360,7 +360,8 @@ body {
     color: #b71c1c;
 }
 
-.cart-summary {}
+.cart-summary {
+}
 
 .summary-card {
     background-color: #eadbc8;
@@ -437,9 +438,11 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 100%
+    );
     pointer-events: none;
 }
 
@@ -553,7 +556,7 @@ body {
         margin-left: auto;
     }
 
-    .cart-item-row>*:last-child {
+    .cart-item-row > *:last-child {
         margin-left: auto;
     }
 }
@@ -561,7 +564,8 @@ body {
 /* ==========================================
    USER DASHBOARD
    ========================================== */
-.dashboard-page {}
+.dashboard-page {
+}
 
 .welcome-banner {
     background: linear-gradient(135deg, #3e1f0d 0%, #6b3a2a 100%);
@@ -577,9 +581,11 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.08) 0%,
-            transparent 60%);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 60%
+    );
     pointer-events: none;
 }
 
@@ -758,9 +764,11 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(107, 58, 42, 0.06) 0%,
-            transparent 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(107, 58, 42, 0.06) 0%,
+        transparent 100%
+    );
     opacity: 0;
     transition: all 0.25s ease;
 }
@@ -1060,6 +1068,7 @@ body {
     border: 1px solid #d7ccc8;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(62, 31, 13, 0.08);
+    display: flex;
 }
 
 .menu-detail-card:hover {

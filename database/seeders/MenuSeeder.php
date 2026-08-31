@@ -73,8 +73,16 @@ class MenuSeeder extends Seeder
 
         foreach ($menus as $menu) {
             Menu::updateOrCreate(
-                ['name' => $menu['name'], 'category_id' => $category->id],
-                array_merge($menu, ['category_id' => $category->id, 'is_available' => true, 'user_id' => $adminId])
+                [
+                    'name' => $menu['name'],
+                    'category_id' => $category->id,
+                ],
+                array_merge($menu, [
+                    'category_id' => $category->id,
+                    'user_id' => $adminId,
+                    'is_available' => true,
+                    'stock' => 20,
+                ])
             );
         }
     }
