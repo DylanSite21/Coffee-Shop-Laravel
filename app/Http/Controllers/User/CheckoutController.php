@@ -35,6 +35,18 @@ class CheckoutController extends Controller
             return redirect()->route('user.cart.index')->with('error', 'Keranjang Anda kosong.');
         }
 
+        $cart->loadMissing('cartItems.menu');
+
+        // Check stock availability for each item in cart
+        foreach ($cart->cartItems as $item) {
+            if (!$item->menu || $item->menu->stock <= 0 || !$item->menu->is_available) {
+                return redirect()->route('user.cart.index')->with('error', 'Menu "' . ($item->menu->name ?? 'item') . '" saat ini sudah habis. Silakan hapus atau perbarui keranjang Anda.');
+            }
+            if ($item->quantity > $item->menu->stock) {
+                return redirect()->route('user.cart.index')->with('error', 'Stok untuk menu "' . $item->menu->name . '" tidak mencukupi untuk jumlah yang dipesan.');
+            }
+        }
+
         $validated = $request->validated();
         $orderNumber = 'ORD-' . strtoupper(uniqid());
 

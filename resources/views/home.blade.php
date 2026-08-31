@@ -145,9 +145,14 @@
                 @foreach ($menus as $menu)
                     <div class="col-md-6 col-lg-4 fade-in-up">
                         <div class="card menu-card h-100">
-                            <div style="overflow:hidden;border-radius:0.75rem 0.75rem 0 0;">
+                            <div style="overflow:hidden;border-radius:0.75rem 0.75rem 0 0;position:relative;">
                                 <img src="{{ $menu->image_url }}" class="card-img-top" alt="{{ $menu->name }}"
                                     style="height:210px;object-fit:cover;transition:transform 0.4s ease;">
+                                @if($menu->stock <= 0)
+                                    <span class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
+                                        <i class="bi bi-slash-circle me-1"></i>Stok Habis
+                                    </span>
+                                @endif
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
@@ -164,27 +169,33 @@
                                 </div>
                                 <p class="card-text flex-grow-1">{{ Str::limit($menu->description, 90) }}</p>
                                 <div class="mt-auto pt-2">
-                                    @auth
-                                        @if (auth()->user()->role === 'user')
-                                            <form action="{{ route('user.cart.store') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="menu_id" value="{{ $menu->id }}">
-                                                <input type="hidden" name="quantity" value="1">
-                                                <button type="submit" class="btn btn-coffee w-100">
-                                                    <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang
-                                                </button>
-                                            </form>
-                                        @else
-                                            <a href="{{ route('user.menus.show', $menu) }}"
-                                                class="btn btn-outline-coffee w-100">
-                                                Lihat Detail
-                                            </a>
-                                        @endif
+                                    @if($menu->stock <= 0)
+                                        <button type="button" class="btn btn-secondary w-100" disabled>
+                                            <i class="bi bi-slash-circle me-2"></i>Stok Habis
+                                        </button>
                                     @else
-                                        <a href="{{ route('login') }}" class="btn btn-coffee w-100">
-                                            <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang
-                                        </a>
-                                    @endguest
+                                        @auth
+                                            @if (auth()->user()->role === 'user')
+                                                <form action="{{ route('user.cart.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button type="submit" class="btn btn-coffee w-100">
+                                                        <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <a href="{{ route('user.menus.show', $menu) }}"
+                                                    class="btn btn-outline-coffee w-100">
+                                                    Lihat Detail
+                                                </a>
+                                            @endif
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn btn-coffee w-100">
+                                                <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang
+                                            </a>
+                                        @endguest
+                                    @endif
                                 </div>
                             </div>
                         </div>

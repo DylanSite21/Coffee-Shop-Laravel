@@ -33,6 +33,11 @@ class CartController extends Controller
 
         $user = auth()->user();
         $menu = Menu::findOrFail($request->menu_id);
+
+        if ($menu->stock <= 0 || !$menu->is_available) {
+            return back()->with('error', 'Maaf, stok ' . $menu->name . ' sedang habis dan tidak dapat dipesan.');
+        }
+
         $cart = $user->carts()->where('status', 'active')->first();
 
         if (!$cart) {
@@ -40,12 +45,16 @@ class CartController extends Controller
         }
 
         $cartItem = $cart->cartItems()->where('menu_id', $menu->id)->first();
+        $targetQuantity = $cartItem ? ($cartItem->quantity + $request->quantity) : $request->quantity;
+
+        if ($targetQuantity > $menu->stock) {
+            return back()->with('error', 'Maaf, jumlah pesanan untuk ' . $menu->name . ' melebihi stok yang tersedia.');
+        }
 
         if ($cartItem) {
-            $newQuantity = $cartItem->quantity + $request->quantity;
             $cartItem->update([
-                'quantity' => $newQuantity,
-                'subtotal' => $newQuantity * $menu->price,
+                'quantity' => $targetQuantity,
+                'subtotal' => $targetQuantity * $menu->price,
             ]);
         } else {
             $cart->cartItems()->create([
@@ -72,6 +81,14 @@ class CartController extends Controller
                 return response()->json(['error' => 'Unauthorized'], 403);
             }
             abort(403);
+        }
+
+        $cartItem->loadMissing('menu');
+        if ($cartItem->menu && $request->quantity > $cartItem->menu->stock) {
+            if ($request->wantsJson() || $request->ajax()) {
+                return response()->json(['error' => 'Jumlah melebihi stok yang tersedia.'], 422);
+            }
+            return back()->with('error', 'Jumlah melebihi stok yang tersedia.');
         }
 
         $cartItem->update([

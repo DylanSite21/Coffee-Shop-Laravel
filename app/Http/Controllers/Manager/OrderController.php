@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -59,13 +60,7 @@ class OrderController extends Controller
 
     public function process(Order $order)
     {
-        if ($order->status !== 'processing') {
-            return back()->with('error', 'Pesanan ini tidak dapat diproses.');
-        }
-
-        $order->update(['status' => 'completed']);
-
-        return back()->with('success', 'Pesanan berhasil diselesaikan.');
+        return $this->complete($order);
     }
 
     public function complete(Order $order)
@@ -74,8 +69,19 @@ class OrderController extends Controller
             return back()->with('error', 'Pesanan ini tidak dapat diselesaikan.');
         }
 
-        $order->update(['status' => 'completed']);
+        DB::transaction(function () use ($order) {
+            $order->update(['status' => 'completed']);
 
-        return back()->with('success', 'Pesanan berhasil diselesaikan.');
+            // Deduct stock for each menu in this order
+            $order->loadMissing('orderDetails.menu');
+            foreach ($order->orderDetails as $detail) {
+                if ($detail->menu) {
+                    $newStock = max(0, (int) $detail->menu->stock - (int) $detail->quantity);
+                    $detail->menu->update(['stock' => $newStock]);
+                }
+            }
+        });
+
+        return back()->with('success', 'Pesanan berhasil diselesaikan dan stok menu telah otomatis dikurangi.');
     }
 }

@@ -2,7 +2,7 @@
     <div class="card menu-card h-100 border-0 shadow-sm">
 
         {{-- Gambar Menu --}}
-        <div class="menu-card-image">
+        <div class="menu-card-image position-relative">
             @if ($menu->image)
                 @if (file_exists(public_path('storage/' . $menu->image)))
                     <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="card-img-top">
@@ -13,6 +13,12 @@
                 <div class="no-image">
                     <i class="bi bi-cup-hot"></i>
                 </div>
+            @endif
+
+            @if($menu->stock <= 0)
+                <span class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
+                    <i class="bi bi-slash-circle me-1"></i>Stok Habis
+                </span>
             @endif
         </div>
 
@@ -39,9 +45,15 @@
                     Rp {{ number_format($menu->price, 0, ',', '.') }}
                 </div>
 
-                <a href="{{ route('user.menus.show', $menu) }}" class="btn btn-coffee w-100">
-                    Lihat Detail
-                </a>
+                @if($menu->stock <= 0)
+                    <a href="{{ route('user.menus.show', $menu) }}" class="btn btn-outline-danger w-100">
+                        <i class="bi bi-x-circle me-1"></i>Stok Habis
+                    </a>
+                @else
+                    <a href="{{ route('user.menus.show', $menu) }}" class="btn btn-coffee w-100">
+                        Lihat Detail
+                    </a>
+                @endif
             </div>
 
         </div>

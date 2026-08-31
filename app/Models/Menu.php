@@ -16,6 +16,7 @@ class Menu extends Model
         'name',
         'description',
         'price',
+        'stock',
         'image',
         'status',
         'is_available',
@@ -25,8 +26,14 @@ class Menu extends Model
     {
         return [
             'price' => 'decimal:2',
+            'stock' => 'integer',
             'is_available' => 'boolean',
         ];
+    }
+
+    public function isInStock(): bool
+    {
+        return $this->stock > 0;
     }
 
     public function scopeApproved($query)
