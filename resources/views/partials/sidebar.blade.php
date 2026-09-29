@@ -5,7 +5,7 @@
 <div class="sidebar col-md-3 col-lg-2">
     {{-- Sidebar Brand --}}
     <div class="sidebar-brand">
-        <span>☕</span>
+        <img src="{{ asset('coffee-cup-svgrepo-com.svg') }}" alt="" width="28" height="28" class="brand-logo">
         <span>Kopi Nusantara</span>
     </div>
 

@@ -575,6 +575,7 @@ body {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .welcome-banner::before {
@@ -589,15 +590,14 @@ body {
     pointer-events: none;
 }
 
-.welcome-banner::after {
-    content: "☕";
+.welcome-watermark {
     position: absolute;
-    right: 2rem;
+    right: 5rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 7rem;
+    width: 7rem;
+    height: 7rem;
     opacity: 0.06;
-    line-height: 1;
     pointer-events: none;
 }
 

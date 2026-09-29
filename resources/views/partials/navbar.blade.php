@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid px-4">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <span class="brand-icon">☕</span>
-            Kopi Nusantara
+            <img src="{{ asset('coffee-cup-svgrepo-com.svg') }}" alt="" width="28" height="28"
+                class="brand-logo"> Kopi Nusantara
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

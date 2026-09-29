@@ -46,7 +46,7 @@
                     style="min-width: 0;">
                     @if (auth()->check())
                         <div
-                            class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 px-md-4">
+                            class="section-title page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 px-md-4">
                             <h1>@yield('title')</h1>
                         </div>
                     @endif
