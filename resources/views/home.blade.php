@@ -65,8 +65,8 @@
                         class="img-fluid w-100" style="height:460px;object-fit:cover;border-radius:1.5rem;">
 
                     {{-- Floating Pill --}}
-                    <div class="hero-stat-pill pill-bottom-left d-none d-lg-block">
-                        <div class="d-flex align-items-center gap-2">
+                    <div class="hero-stat-pill  d-none d-lg-block" style="position: absolute; bottom: 1rem; left: -1rem;">
+                        <div class="d-flex align-items-center gap-2" style="padding-left:20px;">
                             <div style="font-size:1.75rem;">☕</div>
                             <div>
                                 <div
@@ -78,8 +78,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero-stat-pill pill-top-right d-none d-lg-block">
-                        <div class="d-flex align-items-center gap-2">
+                    <div class="hero-stat-pill d-none d-lg-block" style="position: absolute; top: 1rem; right: -1rem;">
+                        <div class="d-flex align-items-center gap-2" style="padding-right:20px;">
                             <div style="font-size:1.5rem;">🌱</div>
                             <div>
                                 <div
@@ -146,12 +146,27 @@
                     <div class="col-md-6 col-lg-4 fade-in-up">
                         <div class="card menu-card h-100">
                             <div style="overflow:hidden;border-radius:0.75rem 0.75rem 0 0;position:relative;">
-                                <img src="{{ $menu->image_url }}" class="card-img-top" alt="{{ $menu->name }}"
+                                @if ($menu->image)
+                                    @if (file_exists(public_path('storage/' . $menu->image)))
+                                        <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}"
+                                            class="card-img-top">
+                                    @elseif (file_exists(public_path('images/' . $menu->image)))
+                                        <img src="{{ asset('images/' . $menu->image) }}" alt="{{ $menu->name }}"
+                                            class="card-img-top">
+                                    @endif
+                                @else
                                     style="height:210px;object-fit:cover;transition:transform 0.4s ease;">
-                                @if($menu->stock <= 0)
-                                    <span class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
-                                        <i class="bi bi-slash-circle me-1"></i>Stok Habis
-                                    </span>
+                                    @if ($menu->stock <= 0)
+                                        <span
+                                            class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm"
+                                            style="font-size: 0.75rem;">
+                                            <i class="bi bi-slash-circle me-1"></i>Stok Habis
+                                        </span>
+                                    @endif
+
+                                    <div class="no-image">
+                                        <i class="bi bi-cup-hot"></i>
+                                    </div>
                                 @endif
                             </div>
                             <div class="card-body d-flex flex-column">
@@ -169,7 +184,7 @@
                                 </div>
                                 <p class="card-text flex-grow-1">{{ Str::limit($menu->description, 90) }}</p>
                                 <div class="mt-auto pt-2">
-                                    @if($menu->stock <= 0)
+                                    @if ($menu->stock <= 0)
                                         <button type="button" class="btn btn-secondary w-100" disabled>
                                             <i class="bi bi-slash-circle me-2"></i>Stok Habis
                                         </button>
@@ -223,22 +238,24 @@
         style="background:linear-gradient(135deg,#F5E8D4 0%,#FDF6ED 100%);border-radius:1.5rem;margin-bottom:2rem;padding-left:2rem;padding-right:2rem;">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <div style="border-radius:1.25rem;overflow:hidden;box-shadow:0 8px 40px rgba(62,31,13,0.18);">
+                <div
+                    style="border-radius:1.25rem;overflow:hidden;box-shadow:0 8px 40px rgba(62,31,13,0.18);width:max-content; margin-inline:auto;">
                     <img src="{{ asset('images/about-coffee.jpg') }}" alt="Biji Kopi Pilihan Kopi Nusantara"
-                        class="img-fluid w-100" style="height:380px;object-fit:cover;">
+                        class="img-fluid " style="width:480px;height:480px;object-fit:cover;">
                 </div>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
                 <span
                     style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#C08B5C;">
                     Tentang Kami
-                </span>
-                <h2 class="section-title text-start mt-2 mb-0" style="padding-bottom:0.5rem;">
-                    Cerita di Balik<br>Setiap Cangkir
-                </h2>
+                </span> <br>
                 <div
-                    style="width:50px;height:3px;background:linear-gradient(90deg,#C08B5C,#D4A855);border-radius:99px;margin:0.75rem 0 1.25rem;">
+                    style="width:20%;height:3px;background:linear-gradient(90deg,#C08B5C,#D4A855);border-radius:99px;margin:0.75rem 0 1.25rem;">
                 </div>
+                <h2 class="section-title text-start mt-2 mb-0" style="padding-bottom:0.5rem;">
+                    Cerita di Balik Setiap Cangkir
+                </h2>
+
                 <p class="text-muted-custom mb-3">
                     Kopi Nusantara lahir dari kecintaan mendalam terhadap kopi Indonesia. Kami percaya bahwa Indonesia
                     memiliki biji kopi terbaik di dunia — dari Gayo Aceh yang floral, Toraja Sulawesi yang earthy,
@@ -348,24 +365,24 @@
             @php
                 $testimonials = [
                     [
-                        'name' => 'Rania Kusuma',
-                        'role' => 'Mahasiswi UI',
+                        'name' => 'Amelia Frizky',
+                        'role' => 'Siswi SMKN 21 Jakarta',
                         'rating' => 5,
                         'text' =>
                             'Cappuccino di sini beneran beda! Foam-nya lembut, rasanya pas banget antara pahit dan manisnya. Jadi langganan rutin sebelum kuliah.',
                         'avatar' => 'R',
                     ],
                     [
-                        'name' => 'Budi Santoso',
-                        'role' => 'Software Engineer',
+                        'name' => 'Fadhil Danendra',
+                        'role' => 'Siswi SMKN 21 Jakarta',
                         'rating' => 5,
                         'text' =>
                             'Tempatnya cozy banget buat kerja. WiFi kencang, kopi enak, dan staff-nya ramah. Caramel Macchiato-nya jadi andalan saya setiap hari!',
                         'avatar' => 'B',
                     ],
                     [
-                        'name' => 'Dira Anggraini',
-                        'role' => 'Content Creator',
+                        'name' => 'Nabila Avisa',
+                        'role' => 'Siswi SMKN 21 Jakarta',
                         'rating' => 5,
                         'text' =>
                             'Matcha Latte di sini mengalahkan banyak coffee shop lain yang pernah saya coba. Worth it banget! Pasti balik lagi bawa teman-teman.',
