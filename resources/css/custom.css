@@ -440,7 +440,7 @@ nav .small.text-muted {
 
 .stat-card .stat-value {
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -617,6 +617,7 @@ nav .small.text-muted {
     padding: 0.7rem 1rem;
     transition: var(--transition);
     font-size: 0.9rem;
+    max-width: 100%;
 }
 
 .form-control:focus,

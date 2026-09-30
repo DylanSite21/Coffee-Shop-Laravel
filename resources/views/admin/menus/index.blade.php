@@ -5,13 +5,13 @@
 @section('content')
     <div class="admin-page fade-in-up">
         <div class="page-header-bar">
-            <div class="page-title-bar">
-                <div class="page-title-icon">
-                    <i class="bi bi-cup-hot"></i>
-                </div>
-                <h2>Daftar Menu</h2>
-            </div>
-            <a href="{{ route('admin.menus.create') }}" class="btn-primary-solid">
+            {{-- <div class="page-title-bar"> --}}
+            {{--    <div class="page-title-icon"> --}}
+            {{--        <i class="bi bi-cup-hot"></i> --}}
+            {{--    </div> --}}
+            {{--    <h2>Daftar Menu</h2> --}}
+            {{-- </div> --}}
+            <a href="{{ route('admin.menus.create') }}" class="btn-primary-solid" style="margin-left:auto;">
                 <i class="bi bi-plus-lg"></i>
                 Tambah Menu
             </a>

@@ -16,7 +16,7 @@ class OrderController extends Controller
 
         $orders = Order::with(['user', 'orderDetails.menu', 'refund'])
             ->when($search, fn($q) => $q->where('order_number', 'like', "%{$search}%")->orWhereHas('user', fn($q2) => $q2->where('name', 'like', "%{$search}%")))
-            ->when($status, function($q, $status) {
+            ->when($status, function ($q, $status) {
                 if ($status === 'refund_pending') {
                     $q->whereHas('refund', fn($rq) => $rq->where('status', 'pending'));
                 } elseif ($status === 'normal') {
@@ -70,7 +70,16 @@ class OrderController extends Controller
         }
 
         DB::transaction(function () use ($order) {
-            $order->update(['status' => 'completed']);
+            $order->update([
+                'status'         => 'completed',
+                'payment_status' => 'paid',
+            ]);
+
+            // Tandai pembayaran lunas
+            $order->payment()->update([
+                'status'  => 'paid',
+                'paid_at' => now(),
+            ]);
 
             // Deduct stock for each menu in this order
             $order->loadMissing('orderDetails.menu');

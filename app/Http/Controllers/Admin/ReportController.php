@@ -16,7 +16,9 @@ class ReportController extends Controller
         $endDate = $request->input('end_date') ? \Carbon\Carbon::parse($request->input('end_date')) : \Carbon\Carbon::now();
 
         $orders = Order::whereBetween('created_at', [$startDate, $endDate])->get();
-        $totalRevenue = $orders->where('payment_status', 'paid')->sum('total');
+        $totalRevenue = \App\Models\Payment::where('status', 'paid')
+            ->whereBetween('paid_at', [$startDate, $endDate])
+            ->sum('amount');
         $totalOrders = $orders->count();
         $completedOrders = $orders->where('status', 'completed')->count();
         $cancelledOrders = $orders->where('status', 'cancelled')->count();

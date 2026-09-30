@@ -1,31 +1,31 @@
 :root {
-    --color-primary: #4E342E;
-    --color-secondary: #6F4E37;
-    --color-background: #F5E6CC;
-    --color-surface: #EADBC8;
-    --color-accent: #A3B18A;
+    --color-primary: #4e342e;
+    --color-secondary: #6f4e37;
+    --color-background: #f5e6cc;
+    --color-surface: #eadbc8;
+    --color-accent: #a3b18a;
 }
 
 body {
-    background-color: #F5E6CC;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5e6cc;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .bg-coffee {
-    background-color: #4E342E !important;
+    background-color: #4e342e !important;
 }
 
 .bg-coffee-light {
-    background-color: #6F4E37 !important;
+    background-color: #6f4e37 !important;
 }
 
 .text-brown {
-    color: #4E342E !important;
+    color: #4e342e !important;
 }
 
 .btn-coffee {
-    background-color: #4E342E;
-    color: #F5E6CC;
+    background-color: #4e342e;
+    color: #f5e6cc;
     border: none;
     border-radius: 0.5rem;
     font-weight: 500;
@@ -34,16 +34,16 @@ body {
 }
 
 .btn-coffee:hover {
-    background-color: #6F4E37;
-    color: #F5E6CC;
+    background-color: #6f4e37;
+    color: #f5e6cc;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(78,52,46,0.3);
+    box-shadow: 0 4px 12px rgba(78, 52, 46, 0.3);
 }
 
 .btn-outline-coffee {
     background-color: transparent;
-    color: #4E342E;
-    border: 2px solid #4E342E;
+    color: #4e342e;
+    border: 2px solid #4e342e;
     border-radius: 0.5rem;
     font-weight: 500;
     padding: 0.5rem 1.25rem;
@@ -51,17 +51,17 @@ body {
 }
 
 .btn-outline-coffee:hover {
-    background-color: #4E342E;
-    color: #F5E6CC;
+    background-color: #4e342e;
+    color: #f5e6cc;
 }
 
 .sidebar {
     min-height: calc(100vh - 56px);
-    background-color: #EADBC8;
+    background-color: #eadbc8;
 }
 
 .sidebar .nav-link {
-    color: #4E342E;
+    color: #4e342e;
     padding: 0.75rem 1rem;
     margin-bottom: 0.25rem;
     border-radius: 0.375rem;
@@ -69,40 +69,40 @@ body {
 }
 
 .sidebar .nav-link:hover {
-    background-color: #F5E6CC;
+    background-color: #f5e6cc;
     transform: translateX(4px);
 }
 
 .sidebar .nav-link.active {
-    background-color: #6F4E37;
-    color: #F5E6CC;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #6f4e37;
+    color: #f5e6cc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card {
     border: none;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    background-color: #EADBC8;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background-color: #eadbc8;
     border-radius: 0.75rem;
 }
 
 .card-header {
-    background-color: #F5E6CC;
-    border-bottom: 1px solid #D7CCC8;
-    color: #4E342E;
+    background-color: #f5e6cc;
+    border-bottom: 1px solid #d7ccc8;
+    color: #4e342e;
     font-weight: 600;
     border-radius: 0.75rem 0.75rem 0 0 !important;
 }
 
 .table {
-    background-color: #EADBC8;
+    background-color: #eadbc8;
     border-radius: 0.5rem;
     overflow: hidden;
 }
 
 .table thead {
-    background-color: #4E342E;
-    color: #F5E6CC;
+    background-color: #4e342e;
+    color: #f5e6cc;
 }
 
 .table thead th {
@@ -117,23 +117,26 @@ body {
 .table tbody td {
     padding: 0.75rem 1rem;
     vertical-align: middle;
-    border-color: #D7CCC8;
-    color: #3E2723;
+    border-color: #d7ccc8;
+    color: #3e2723;
 }
 
 .table tbody tr:hover {
-    background-color: #F5E6CC;
+    background-color: #f5e6cc;
 }
 
 .footer {
-    background-color: #4E342E;
-    color: #F5E6CC;
+    background-color: #4e342e;
+    color: #f5e6cc;
 }
 
 /* ==========================================
    ADMIN / MANAGER MENU TABLE
    ========================================== */
-.admin-page, .manager-page { max-width: 1200px; }
+.admin-page,
+.manager-page {
+    max-width: 1200px;
+}
 
 .page-header-bar {
     display: flex;
@@ -154,8 +157,8 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 0.75rem;
-    background: linear-gradient(135deg, #4E342E, #6B3A2A);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #4e342e, #6b3a2a);
+    color: #fdf6ed;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -163,22 +166,24 @@ body {
 }
 
 .page-title-bar h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
-    color: #3E1F0D;
+    color: #3e1f0d;
     margin: 0;
     font-size: 1.4rem;
 }
 
 .menu-table-card {
-    background-color: #EADBC8;
+    background-color: #eadbc8;
     border-radius: 0.75rem;
-    border: 1px solid #D7CCC8;
+    border: 1px solid #d7ccc8;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.menu-table-card .card-body { padding: 0; }
+.menu-table-card .card-body {
+    padding: 0;
+}
 
 .menu-toolbar {
     padding: 1.25rem 1.5rem;
@@ -187,25 +192,30 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    border-bottom: 1px solid #D7CCC8;
+    border-bottom: 1px solid #d7ccc8;
 }
 
-.menu-search-form { display: flex; gap: 0.5rem; max-width: 400px; flex: 1; }
+.menu-search-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 400px;
+    flex: 1;
+}
 
 .menu-search-form .form-control {
-    border: 1.5px solid #D7CCC8;
-    background-color: #FDF6ED;
+    border: 1.5px solid #d7ccc8;
+    background-color: #fdf6ed;
     border-radius: 0.5rem;
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
-    color: #3E2723;
+    color: #3e2723;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-search-form .form-control:focus {
-    border-color: #C08B5C;
-    box-shadow: 0 0 0 3px rgba(192,139,92,0.15);
-    background-color: #FDF6ED;
+    border-color: #c08b5c;
+    box-shadow: 0 0 0 3px rgba(192, 139, 92, 0.15);
+    background-color: #fdf6ed;
 }
 
 .table {
@@ -216,8 +226,8 @@ body {
 }
 
 .table thead {
-    background: linear-gradient(135deg, #3E1F0D 0%, #6B3A2A 100%);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #3e1f0d 0%, #6b3a2a 100%);
+    color: #fdf6ed;
 }
 
 .table thead th {
@@ -233,25 +243,29 @@ body {
 .table tbody td {
     padding: 0.875rem 1rem;
     vertical-align: middle;
-    border-color: #D7CCC8;
-    color: #3E2723;
+    border-color: #d7ccc8;
+    color: #3e2723;
     font-size: 0.9rem;
 }
 
-.table tbody tr { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-.table tbody tr:hover { background-color: #F5E8D4; }
+.table tbody tr {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.table tbody tr:hover {
+    background-color: #f5e8d4;
+}
 
 .menu-thumb {
     width: 56px;
     height: 56px;
     border-radius: 0.5rem;
     object-fit: cover;
-    border: 2px solid #DEC9AA;
+    border: 2px solid #dec9aa;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-thumb:hover {
-    border-color: #C08B5C;
+    border-color: #c08b5c;
     transform: scale(1.05);
 }
 
@@ -268,7 +282,7 @@ body {
 }
 
 .status-badge::before {
-    content: '';
+    content: "";
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -276,16 +290,31 @@ body {
     opacity: 0.8;
 }
 
-.status-pending    { background-color: #FFF3E0; color: #E65100; }
+.status-pending {
+    background-color: #fff3e0;
+    color: #e65100;
+}
 .status-approved,
 .status-completed,
-.status-paid       { background-color: #E8F5E9; color: #2E7D32; }
+.status-paid {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
 .status-rejected,
 .status-cancelled,
-.status-failed     { background-color: #FFEBEE; color: #B71C1C; }
-.status-processing { background-color: #E3F2FD; color: #01579B; }
+.status-failed {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+.status-processing {
+    background-color: #e3f2fd;
+    color: #01579b;
+}
 
-.action-btns { display: flex; gap: 0.4rem; }
+.action-btns {
+    display: flex;
+    gap: 0.4rem;
+}
 
 .btn-icon {
     width: 36px;
@@ -302,32 +331,32 @@ body {
 }
 
 .btn-icon-edit {
-    background-color: #FFF3E0;
-    color: #E65100;
+    background-color: #fff3e0;
+    color: #e65100;
 }
 
 .btn-icon-edit:hover {
-    background-color: #E65100;
+    background-color: #e65100;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(230,81,0,0.3);
+    box-shadow: 0 4px 12px rgba(230, 81, 0, 0.3);
 }
 
 .btn-icon-delete {
-    background-color: #FFEBEE;
-    color: #B71C1C;
+    background-color: #ffebee;
+    color: #b71c1c;
 }
 
 .btn-icon-delete:hover {
-    background-color: #B71C1C;
+    background-color: #b71c1c;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(183,28,28,0.3);
+    box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
 }
 
 .btn-primary-solid {
-    background: linear-gradient(135deg, #6B3A2A 0%, #4E342E 100%);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #6b3a2a 0%, #4e342e 100%);
+    color: #fdf6ed;
     border: none;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -343,13 +372,13 @@ body {
 .btn-primary-solid:hover {
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(62,31,13,0.35);
+    box-shadow: 0 6px 20px rgba(62, 31, 13, 0.35);
 }
 
 .btn-outline-coffee {
     background-color: transparent;
-    color: #4E342E;
-    border: 2px solid #4E342E;
+    color: #4e342e;
+    border: 2px solid #4e342e;
     border-radius: 0.5rem;
     font-weight: 600;
     font-size: 0.9rem;
@@ -362,11 +391,11 @@ body {
 }
 
 .btn-outline-coffee:hover {
-    background: linear-gradient(135deg, #6B3A2A, #4E342E);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #6b3a2a, #4e342e);
+    color: #fdf6ed;
     border-color: transparent;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(62,31,13,0.25);
+    box-shadow: 0 6px 20px rgba(62, 31, 13, 0.25);
 }
 
 .empty-state {
@@ -376,31 +405,40 @@ body {
 
 .empty-state-icon {
     font-size: 3rem;
-    color: #C08B5C;
+    color: #c08b5c;
     opacity: 0.7;
     margin-bottom: 1rem;
 }
 
 .pagination-container {
     padding: 1rem 1.5rem;
-    border-top: 1px solid #D7CCC8;
+    border-top: 1px solid #d7ccc8;
 }
 
 @media (max-width: 768px) {
-    .menu-toolbar { flex-direction: column; align-items: stretch; }
-    .menu-search-form { max-width: 100%; }
-    .table-responsive { border-radius: 0; }
+    .menu-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .menu-search-form {
+        max-width: 100%;
+    }
+    .table-responsive {
+        border-radius: 0;
+    }
 }
 
 /* ==========================================
    ADMIN REPORTS
    ========================================== */
-.report-page { max-width: 1200px; }
+.report-page {
+    max-width: 1200px;
+}
 
 .report-filter-bar {
-    background-color: #EADBC8;
+    background-color: #eadbc8;
     border-radius: 0.75rem;
-    border: 1px solid #D7CCC8;
+    border: 1px solid #d7ccc8;
     padding: 1.25rem 1.5rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -410,7 +448,7 @@ body {
 }
 
 .report-filter-bar .form-label {
-    color: #3E1F0D;
+    color: #3e1f0d;
     font-weight: 600;
     font-size: 0.875rem;
     margin-bottom: 0.4rem;
@@ -424,9 +462,9 @@ body {
 }
 
 .report-stat-card {
-    background-color: #EADBC8;
+    background-color: #eadbc8;
     border-radius: 0.75rem;
-    border: 1px solid #D7CCC8;
+    border: 1px solid #d7ccc8;
     padding: 1.25rem 1.5rem;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -434,7 +472,7 @@ body {
 }
 
 .report-stat-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -442,15 +480,23 @@ body {
     height: 4px;
 }
 
-.report-stat-card.revenue::before { background: linear-gradient(90deg, #2E7D32, #66BB6A); }
-.report-stat-card.orders::before { background: linear-gradient(90deg, #01579B, #42A5F5); }
-.report-stat-card.completed::before { background: linear-gradient(90deg, #E65100, #FF9800); }
-.report-stat-card.cancelled::before { background: linear-gradient(90deg, #B71C1C, #EF5350); }
+.report-stat-card.revenue::before {
+    background: linear-gradient(90deg, #2e7d32, #66bb6a);
+}
+.report-stat-card.orders::before {
+    background: linear-gradient(90deg, #01579b, #42a5f5);
+}
+.report-stat-card.completed::before {
+    background: linear-gradient(90deg, #e65100, #ff9800);
+}
+.report-stat-card.cancelled::before {
+    background: linear-gradient(90deg, #b71c1c, #ef5350);
+}
 
 .report-stat-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(62,31,13,0.1);
-    border-color: #C08B5C;
+    box-shadow: 0 6px 20px rgba(62, 31, 13, 0.1);
+    border-color: #c08b5c;
 }
 
 .report-stat-label {
@@ -458,32 +504,33 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #6B4C3B;
+    color: #6b4c3b;
     margin-bottom: 0.35rem;
 }
 
 .report-stat-value {
-    font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
-    font-weight: 800;
-    color: #3E1F0D;
+    font-weight: 600;
+    color: #3e1f0d;
 }
 
 .top-menu-card {
-    background-color: #EADBC8;
+    background-color: #eadbc8;
     border-radius: 0.75rem;
-    border: 1px solid #D7CCC8;
+    border: 1px solid #d7ccc8;
     overflow: hidden;
 }
 
-.top-menu-card .card-body { padding: 0; }
+.top-menu-card .card-body {
+    padding: 0;
+}
 
 .top-menu-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.875rem 1.5rem;
-    border-bottom: 1px solid #EDD9BC;
+    border-bottom: 1px solid #edd9bc;
     transition: all 0.2s ease;
 }
 
@@ -492,15 +539,15 @@ body {
 }
 
 .top-menu-item:hover {
-    background-color: #F5E8D4;
+    background-color: #f5e8d4;
 }
 
 .top-menu-rank {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #4E342E, #6B3A2A);
-    color: #FDF6ED;
+    background: linear-gradient(135deg, #4e342e, #6b3a2a);
+    color: #fdf6ed;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -518,19 +565,19 @@ body {
 .top-menu-name {
     font-weight: 600;
     font-size: 0.9rem;
-    color: #3E1F0D;
+    color: #3e1f0d;
 }
 
 .top-menu-sold {
     font-size: 0.8rem;
-    color: #6B4C3B;
+    color: #6b4c3b;
 }
 
 .top-menu-count {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
     font-size: 1rem;
-    color: #6B3A2A;
+    color: #6b3a2a;
     white-space: nowrap;
 }
 
@@ -541,8 +588,8 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #D4A855, #C08B5C);
-    color: #3E1F0D;
+    background: linear-gradient(135deg, #d4a855, #c08b5c);
+    color: #3e1f0d;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -559,13 +606,13 @@ body {
 
 .user-name {
     font-weight: 600;
-    color: #3E1F0D;
+    color: #3e1f0d;
     font-size: 0.9rem;
 }
 
 .user-email {
     font-size: 0.78rem;
-    color: #6B4C3B;
+    color: #6b4c3b;
 }
 
 .role-badge {
@@ -581,7 +628,7 @@ body {
 }
 
 .role-badge::before {
-    content: '';
+    content: "";
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -589,15 +636,24 @@ body {
     opacity: 0.8;
 }
 
-.role-admin    { background-color: #E3F2FD; color: #01579B; }
-.role-manager  { background-color: #FFF3E0; color: #E65100; }
-.role-user     { background-color: #E8F5E9; color: #2E7D32; }
+.role-admin {
+    background-color: #e3f2fd;
+    color: #01579b;
+}
+.role-manager {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+.role-user {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
 
 /* ==========================================
    ADMIN APPROVALS
    ========================================== */
 .approve-btn {
-    background: linear-gradient(135deg, #2E7D32, #388E3C);
+    background: linear-gradient(135deg, #2e7d32, #388e3c);
     color: #fff;
     border: none;
     border-radius: 0.5rem;
@@ -614,11 +670,11 @@ body {
 .approve-btn:hover {
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(46,125,50,0.3);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
 }
 
 .reject-btn {
-    background: linear-gradient(135deg, #C62828, #D32F2F);
+    background: linear-gradient(135deg, #c62828, #d32f2f);
     color: #fff;
     border: none;
     border-radius: 0.5rem;
@@ -635,5 +691,5 @@ body {
 .reject-btn:hover {
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(183,28,28,0.3);
+    box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
 }
