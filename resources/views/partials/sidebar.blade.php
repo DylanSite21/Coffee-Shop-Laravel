@@ -55,7 +55,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('manager.dashboard') ? 'active' : '' }}"
                     href="{{ route('manager.dashboard') }}">
-                    <i class="bi bi-speedometer2"></i> Dashboard
+                    <i class="bi bi-bar-chart"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">

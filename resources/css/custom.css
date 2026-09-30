@@ -439,7 +439,6 @@ nav .small.text-muted {
 }
 
 .stat-card .stat-value {
-    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
@@ -1166,7 +1165,7 @@ nav .small.text-muted {
    IMAGE PREVIEW
    ========================================== */
 .image-preview {
-    width: 100%;
+    width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: var(--radius-sm);
