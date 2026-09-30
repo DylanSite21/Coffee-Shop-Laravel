@@ -3,3 +3,49 @@
 @import "./manager.css";
 @import "./user.css";
 @import "./auth.css";
+/* Rating Box */
+.auth-rating-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+}
+
+.auth-rating-label {
+    font-size: 0.75rem;
+    color: #D4A855;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.5rem;
+}
+
+.auth-rating-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 1.6rem;
+    color: #FDF6ED;
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.auth-rating-value i {
+    color: #D4A855;
+    font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.auth-rating-sub {
+    font-size: 0.75rem;
+    color: #C8A882;
+    margin-top: 0.25rem;
+    text-align: center;
+}
