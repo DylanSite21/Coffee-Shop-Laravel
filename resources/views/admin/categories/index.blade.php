@@ -17,42 +17,58 @@
                     <button type="submit" class="btn btn-coffee">Cari</button>
                 </form>
             </div>
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Slug</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($categories as $category)
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->slug }}</td>
-                            <td>{{ $category->is_active ? 'Aktif' : 'Tidak Aktif' }}</td>
-                            <td>
-                                <a href="{{ route('admin.categories.edit', $category) }}"
-                                    class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST"
-                                    class="d-inline" onsubmit="return confirm('Yakin hapus?')">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                </form>
-                            </td>
+                            <th>No</th>
+                            <th>Gambar</th>
+                            <th>Nama</th>
+                            <th>Slug</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center">Tidak ada data.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        @forelse($categories as $category)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($category->image)
+                                        @if (file_exists(public_path('storage/' . $category->image)))
+                                            <img src="{{ asset('storage/' . $category->image) }}"
+                                                alt="{{ $category->name }}" class="menu-thumb">
+                                        @elseif (file_exists(public_path('images/' . $menu->image)))
+                                            <img src="{{ asset('images/' . $category->image) }}" alt="{{ $category->name }}"
+                                                class="menu-thumb">
+                                        @endif
+                                    @else
+                                        <div class="menu-thumb">
+                                            <i class="bi bi-cup-hot"></i>
+                                        </div>
+                                    @endif
+                                </td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->slug }}</td>
+                                <td>{{ $category->is_active ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                <td>
+                                    <a href="{{ route('admin.categories.edit', $category) }}"
+                                        class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('admin.categories.destroy', $category) }}" method="POST"
+                                        class="d-inline" onsubmit="return confirm('Yakin hapus?')">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center">Tidak ada data.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
             <div class="d-flex justify-content-center mt-4">
                 {{ $categories->links() }}
             </div>

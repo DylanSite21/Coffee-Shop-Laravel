@@ -57,7 +57,7 @@
                 @endauth
             </ul>
 
-            <ul class="navbar-nav align-items-center gap-1 ms-auto">
+            <ul class="navbar-nav align-items-start gap-1 ms-auto">
 
 
                 @guest

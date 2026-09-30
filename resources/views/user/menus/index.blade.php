@@ -3,15 +3,15 @@
 @section('title', 'Menu')
 
 @section('content')
-    <div class="row mb-4">
-        <div class="col-md-4">
+    <div class="row mb-4" style="gap:5px;">
+        <div class="col-md-5">
             <form method="GET" action="{{ route('user.menus.index') }}" class="d-flex">
                 <input type="text" name="search" class="form-control me-2" placeholder="Cari menu..."
                     value="{{ $search }}">
-                <button type="submit" class="btn btn-coffee">Cari</button>
+                <button type="submit" class="btn btn-coffee" style="min-width:100px;">Cari</button>
             </form>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-5">
             <select class="form-select" onchange="location = '{{ route('user.menus.index') }}?category=' + this.value;">
                 <option value="">Semua Kategori</option>
                 @foreach ($categories as $category)

@@ -3,7 +3,8 @@
         <div class="row g-4">
             {{-- Brand Column --}}
             <div class="col-lg-4">
-                <div class="footer-brand">☕ Kopi Nusantara</div>
+                <div class="footer-brand"> <img src="{{ asset('coffee-cup-svgrepo-com.svg') }}" alt=""
+                        width="28" height="28" class="brand-logo"> Kopi Nusantara</div>
                 <p class="footer-tagline">Dari biji pilihan, untuk secangkir cerita</p>
                 <p style="font-size:0.875rem;color:#C8A882;line-height:1.7;max-width:300px;">
                     Kopi Nusantara hadir menghadirkan pengalaman menikmati kopi premium Indonesia yang autentik,
@@ -27,7 +28,8 @@
                     <a href="{{ route('login') }}">Login</a>
                     <a href="{{ route('register') }}">Daftar</a>
                 @else
-                    <a href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : (auth()->user()->role === 'manager' ? route('manager.dashboard') : route('user.dashboard')) }}">Dashboard</a>
+                    <a
+                        href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : (auth()->user()->role === 'manager' ? route('manager.dashboard') : route('user.dashboard')) }}">Dashboard</a>
                 @endguest
             </div>
 
@@ -49,7 +51,7 @@
                     </div>
                 </div>
                 <div class="mt-3" style="font-size:0.875rem;color:#C8A882;">
-                    <div><i class="bi bi-geo-alt me-2" style="color:#D4A855;"></i>Jl. Kopi Indah No. 17, Jakarta</div>
+                    <div><i class="bi bi-geo-alt me-2" style="color:#D4A855;"></i>Jl. Kebon Kosong No. 17, Jakarta</div>
                 </div>
             </div>
 
@@ -61,8 +63,11 @@
                     <div><i class="bi bi-envelope me-2" style="color:#D4A855;"></i>hello@kopinusantara.id</div>
                     <div><i class="bi bi-whatsapp me-2" style="color:#D4A855;"></i>+62 812-3456-7890</div>
                 </div>
-                <div class="mt-3 p-3" style="background:rgba(255,255,255,0.05);border-radius:0.5rem;border:1px solid rgba(255,255,255,0.08);">
-                    <div style="font-size:0.75rem;color:#D4A855;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.25rem;">Rating Pelanggan</div>
+                <div class="mt-3 p-3"
+                    style="background:rgba(255,255,255,0.05);border-radius:0.5rem;border:1px solid rgba(255,255,255,0.08);">
+                    <div
+                        style="font-size:0.75rem;color:#D4A855;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.25rem;">
+                        Rating Pelanggan</div>
                     <div style="color:#FDF6ED;font-size:1.1rem;font-weight:700;">⭐ 4.9 / 5.0</div>
                     <div style="font-size:0.75rem;color:#C8A882;">dari 1.200+ ulasan</div>
                 </div>
