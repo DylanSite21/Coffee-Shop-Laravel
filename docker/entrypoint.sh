@@ -1,4 +1,6 @@
+# configurasi untuk deploy di render
 #!/bin/sh
+
 set -e
 
 # Configure port in Nginx config
