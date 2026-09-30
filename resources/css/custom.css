@@ -1065,7 +1065,7 @@ nav .small.text-muted {
     gap: 0.5rem;
     background-color: rgba(212, 168, 85, 0.15);
     border: 1px solid rgba(212, 168, 85, 0.3);
-    color: var(--color-accent);
+    color: var(--color-primary);
     padding: 0.35rem 0.875rem;
     border-radius: 99px;
     font-size: 0.8rem;

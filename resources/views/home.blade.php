@@ -11,7 +11,7 @@
         <div class="row align-items-center g-5" style="min-height:82vh;">
             <div class="col-lg-6 order-2 order-lg-1">
                 <div class="hero-badge fade-in-up">
-                    <span>✨</span> Biji Kopi Pilihan Nusantara
+                    Biji Kopi Pilihan Nusantara
                 </div>
 
                 <h1 class="hero-title fade-in-up delay-1">
@@ -143,7 +143,7 @@
         @if ($menus->count() > 0)
             <div class="row g-4">
                 @foreach ($menus as $menu)
-                    <div class="col-md-6 col-lg-4 fade-in-up">
+                    <div class="col-md-6 col-lg-4">
                         <div class="card menu-card h-100">
                             <div style="overflow:hidden;border-radius:0.75rem 0.75rem 0 0;position:relative;">
                                 @if ($menu->image)
@@ -153,22 +153,22 @@
                                     @elseif (file_exists(public_path('images/' . $menu->image)))
                                         <img src="{{ asset('images/' . $menu->image) }}" alt="{{ $menu->name }}"
                                             class="card-img-top">
+                                    @else
+                                        <div class="no-image"><i class="bi bi-cup-hot"></i></div>
                                     @endif
                                 @else
-                                    style="height:210px;object-fit:cover;transition:transform 0.4s ease;">
-                                    @if ($menu->stock <= 0)
-                                        <span
-                                            class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm"
-                                            style="font-size: 0.75rem;">
-                                            <i class="bi bi-slash-circle me-1"></i>Stok Habis
-                                        </span>
-                                    @endif
+                                    <div class="no-image"><i class="bi bi-cup-hot"></i></div>
+                                @endif
 
-                                    <div class="no-image">
-                                        <i class="bi bi-cup-hot"></i>
-                                    </div>
+                                @if ($menu->stock <= 0)
+                                    <span
+                                        class="badge bg-danger text-white position-absolute top-0 end-0 m-2 px-2 py-1 shadow-sm"
+                                        style="font-size: 0.75rem;">
+                                        <i class="bi bi-slash-circle me-1"></i>Stok Habis
+                                    </span>
                                 @endif
                             </div>
+                            {{-- lanjutkan dengan <div class="card-body ..."> seperti sebelumnya --}}
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <div>
@@ -442,4 +442,80 @@
         </section>
     @endguest
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            const mm = gsap.matchMedia();
+
+            mm.add('(prefers-reduced-motion: no-preference)', () => {
+                const reveal = (selector, {
+                    y = 70,
+                    rowDelay = 0.12
+                } = {}) => {
+                    const els = gsap.utils.toArray(selector);
+                    if (!els.length) return;
+
+                    // Jeda kecil hanya untuk elemen dalam baris yang sama
+                    const rows = {};
+                    els.forEach((el) => {
+                        const top = Math.round(el.getBoundingClientRect().top + window.scrollY);
+                        (rows[top] = rows[top] || []).push(el);
+                    });
+                    const delays = new Map();
+                    Object.values(rows).forEach((row) =>
+                        row.forEach((el, i) => delays.set(el, i * rowDelay))
+                    );
+
+                    els.forEach((el) => {
+                        gsap.fromTo(el, {
+                            y,
+                            opacity: 0
+                        }, {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.9,
+                            ease: 'power3.out',
+                            delay: delays.get(el),
+                            clearProps: 'transform,opacity',
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 90%', // muncul saat elemen masuk 10% dari bawah layar
+                                once: true
+                            }
+                        });
+                    });
+                };
+
+                // Kategori Menu
+                reveal('.categories-section > .text-center');
+                reveal('.categories-section .row > div');
+
+                // Menu Populer
+                reveal('.menus-section > .text-center.mb-5');
+                reveal('.menus-section .row > div');
+                reveal('.menus-section > .text-center.mt-5');
+
+                // Tentang Kami
+                reveal('.about-section .col-lg-6:first-child > div');
+                reveal('.about-section .col-lg-6:last-child > *:not(br)', {
+                    rowDelay: 0
+                });
+
+                // Keunggulan
+                reveal('.features-section > .text-center');
+                reveal('.features-section .row > div');
+
+                // Testimoni
+                reveal('.testimonials-section > .text-center');
+                reveal('.testimonials-section .row > div');
+
+                // CTA (hanya guest)
+                reveal('.cta-section > div');
+
+                window.addEventListener('load', () => ScrollTrigger.refresh());
+            });
+        });
+    </script>
 @endsection
