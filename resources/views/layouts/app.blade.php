@@ -22,6 +22,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    {{-- Google Icons --}}
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=bakery_dining,fastfood,coffee,water_medium,lunch_dining,cookie,psychiatry,person_apron,bolt,trophy,aq_indoor,partner_heart,app_registration,share_location,sell,paid,star" />
+
     <!-- App CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @include('partials.styles')

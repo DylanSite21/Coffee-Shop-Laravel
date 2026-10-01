@@ -17,19 +17,27 @@
 
                 <ul class="auth-feature-list">
                     <li>
-                        <span class="feature-icon">🌱</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                psychiatry
+                            </span></span>
                         <span>Biji kopi 100% lokal Indonesia</span>
                     </li>
                     <li>
-                        <span class="feature-icon">👨‍🍳</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                person_apron
+                            </span></span>
                         <span>Barista profesional bersertifikat</span>
                     </li>
                     <li>
-                        <span class="feature-icon">⚡</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                bolt
+                            </span></span>
                         <span>Pesan & lacak pesanan real-time</span>
                     </li>
                     <li>
-                        <span class="feature-icon">💝</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                partner_heart
+                            </span></span>
                         <span>Program loyalitas & poin rewards</span>
                     </li>
                 </ul>
@@ -41,7 +49,9 @@
                         Rating Pelanggan
                     </div>
                     <div style="font-size:1.5rem;color:#FDF6ED;font-weight:800;font-family:'Playfair Display',serif;">
-                        ⭐ 4.9 / 5.0
+                        <span class="material-symbols-outlined">
+                            star
+                        </span> 4.9 / 5.0
                     </div>
                     <div style="font-size:0.75rem;color:#C8A882;">Dari 1.200+ ulasan pelanggan</div>
                 </div>
@@ -80,7 +90,12 @@
                         <label for="email" class="form-label">Alamat Email</label>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-envelope"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                </svg>
                             </span>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                 name="email" value="{{ old('email') }}" placeholder="nama@email.com" required autofocus
@@ -97,7 +112,12 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-lock"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
                             </span>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 id="password" name="password" placeholder="Masukkan password" required
@@ -115,8 +135,8 @@
                     <div class="mb-4 d-flex justify-content-between align-items-center">
                         <div class="form-check">
                             <input type="hidden" name="remember" value="0">
-                            <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1"
-                                {{ old('remember') ? 'checked' : '' }}>
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember"
+                                value="1" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">Ingat saya</label>
                         </div>
                     </div>

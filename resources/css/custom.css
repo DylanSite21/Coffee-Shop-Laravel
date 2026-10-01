@@ -27,6 +27,9 @@
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --hero-color: #ffffff;
+    --sub-hero-color: #cccccc;
 }
 
 /* ==========================================
@@ -801,6 +804,10 @@ nav .small.text-muted {
     transition: transform 0.3s ease;
 }
 
+.category-icon span {
+    font-size: 3rem;
+}
+
 .category-card:hover .category-icon {
     transform: scale(1.15);
 }
@@ -1038,7 +1045,6 @@ nav .small.text-muted {
    HERO SECTION
    ========================================== */
 .hero-section {
-    background: linear-gradient(160deg, #fdf6ed 0%, #f5e8d4 100%);
     padding: 2rem 0;
     position: relative;
     overflow: hidden;
@@ -1065,7 +1071,7 @@ nav .small.text-muted {
     gap: 0.5rem;
     background-color: rgba(212, 168, 85, 0.15);
     border: 1px solid rgba(212, 168, 85, 0.3);
-    color: var(--color-primary);
+    color: var(--hero-color);
     padding: 0.35rem 0.875rem;
     border-radius: 99px;
     font-size: 0.8rem;
@@ -1079,7 +1085,7 @@ nav .small.text-muted {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.15;
-    color: var(--color-primary);
+    color: var(--hero-color);
     margin-bottom: 1.25rem;
 }
 
@@ -1089,7 +1095,7 @@ nav .small.text-muted {
 
 .hero-subtitle {
     font-size: 1.05rem;
-    color: var(--color-text-muted);
+    color: var(--sub-hero-color);
     max-width: 480px;
     margin-bottom: 2rem;
     line-height: 1.75;
@@ -1517,4 +1523,8 @@ nav .small.text-muted {
 
 .modal-backdrop {
     z-index: 1055 !important;
+}
+
+.icon-google span {
+    font-size: 3rem;
 }

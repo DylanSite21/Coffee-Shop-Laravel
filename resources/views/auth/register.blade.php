@@ -17,19 +17,27 @@
 
                 <ul class="auth-feature-list">
                     <li>
-                        <span class="feature-icon">🎁</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                app_registration
+                            </span></span>
                         <span>Daftar gratis, nikmati langsung</span>
                     </li>
                     <li>
-                        <span class="feature-icon">📦</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                share_location
+                            </span></span>
                         <span>Lacak pesanan secara real-time</span>
                     </li>
                     <li>
-                        <span class="feature-icon">💝</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                paid
+                            </span></span>
                         <span>Kumpulkan poin setiap transaksi</span>
                     </li>
                     <li>
-                        <span class="feature-icon">🏷️</span>
+                        <span class="feature-icon"><span class="material-symbols-outlined">
+                                sell
+                            </span></span>
                         <span>Akses promo & diskon eksklusif</span>
                     </li>
                 </ul>
@@ -83,7 +91,12 @@
                         <label for="name" class="form-label">Nama Lengkap</label>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-person"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
                             </span>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                 name="name" value="{{ old('name') }}" placeholder="Nama lengkap Anda" required
@@ -98,7 +111,12 @@
                         <label for="email" class="form-label">Alamat Email</label>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-envelope"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                </svg>
                             </span>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                 name="email" value="{{ old('email') }}" placeholder="nama@email.com" required
@@ -113,7 +131,13 @@
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-lock"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
+                                    </rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
                             </span>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 id="password" name="password" placeholder="Minimal 8 karakter" required
@@ -136,11 +160,19 @@
                         <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                         <div class="input-group">
                             <span class="input-group-text" style="border-radius:0.5rem 0 0 0.5rem;border-right:0;">
-                                <i class="bi bi-lock-fill"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
+                                    </rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
                             </span>
-                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                id="password_confirmation" name="password_confirmation" placeholder="Ulangi password Anda"
-                                required style="border-radius:0;border-left:0;border-right:0;">
+                            <input type="password"
+                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                id="password_confirmation" name="password_confirmation"
+                                placeholder="Ulangi password Anda" required
+                                style="border-radius:0;border-left:0;border-right:0;">
                             <button class="input-group-text" type="button" id="toggleConfirm"
                                 title="Tampilkan/Sembunyikan">
                                 <i class="bi bi-eye" id="eyeIcon2"></i>
