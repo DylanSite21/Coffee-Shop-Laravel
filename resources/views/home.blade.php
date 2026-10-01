@@ -26,7 +26,7 @@
                     Indonesia
                 </h1>
 
-                <p class="hero-subtitle fade-in-up delay-2">
+                <p class="hero-subtitle fade-in-up delay-2"style="text-align: justify;">
                     Dari pegunungan Flores, Toraja, hingga Aceh — setiap tegukan menceritakan
                     kisah petani kopi dan tradisi penyeduhan yang telah turun-temurun.
                     Hadir dalam suasana hangat yang memanjakan.
@@ -63,7 +63,8 @@
                             <span class="material-symbols-outlined">
                                 star
                             </span>
-                            4.9</div>
+                            4.9
+                        </div>
                         <div style="font-size:0.8rem;color:#cccccc;font-weight:500;">Rating Rata-rata</div>
                     </div>
                 </div>
@@ -227,9 +228,9 @@ fastfood
                                                 </a>
                                             @endif
                                         @else
-                                            <a href="{{ route('login') }}" class="btn btn-coffee w-100">
-                                                <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang
-                                            </a>
+                                            {{-- <a href="{{ route('login') }}" class="btn btn-coffee w-100"> --}}
+                                            {{--    <i class="bi bi-bag-plus me-2"></i>Tambah ke Keranjang --}}
+                                            {{-- </a> --}}
                                         @endguest
                                     @endif
                                 </div>
@@ -262,32 +263,33 @@ fastfood
             rgba(0,0,0,0.70) 50%,
             rgba(0,0,0,0.40) 100%),
         url('{{ asset('images/about-coffee.jpg') }}') center / cover no-repeat;">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <div
-                    style="border-radius:1.25rem;overflow:hidden;box-shadow:0 8px 40px rgba(62,31,13,0.18);width:max-content; margin-inline:auto;">
-                    <img src="{{ asset('images/about-coffee.jpg') }}" alt="Biji Kopi Pilihan Kopi Nusantara"
-                        class="img-fluid " style="width:480px;height:480px;object-fit:cover;">
-                </div>
-            </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class=" d-flex justify-content-center g-5" style="padding:50px 0 100px 0;">
+            {{-- <div class="col-lg-6"> --}}
+            {{--    <div --}}
+            {{--        style="border-radius:1.25rem;overflow:hidden;box-shadow:0 8px 40px rgba(62,31,13,0.18);width:max-content; margin-inline:auto;"> --}}
+            {{--        <img src="{{ asset('images/about-coffee.jpg') }}" alt="Biji Kopi Pilihan Kopi Nusantara" --}}
+            {{--            class="img-fluid " style="width:480px;height:480px;object-fit:cover;"> --}}
+            {{--    </div> --}}
+            {{-- </div> --}}
+            {{-- <div class="col-lg-6 mt-4 mt-lg-0"> --}}
+            <div class=" mt-4 mt-lg-0" style="max-width:50%;text-align:center;">
                 <span
                     style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#ffffff;">
                     Tentang Kami
                 </span> <br>
                 <div
-                    style="width:20%;height:3px;background:linear-gradient(90deg,#C08B5C,#D4A855);border-radius:99px;margin:0.75rem 0 1.25rem;">
-                </div>
+                    style="width:20%;height:3px;background:linear-gradient(90deg,#C08B5C,#D4A855);border-radius:99px;margin:0.75rem 0 1.25rem; margin:auto;">
+                </div> <br>
                 <h2 class="section-title text-start mt-2 mb-0" style="padding-bottom:0.5rem;color:#ffffff;">
                     Cerita di Balik Setiap Cangkir
-                </h2>
+                </h2> <br>
 
-                <p class=" mb-3" style="color:#ffffff;">
+                <p class=" my-3" style="color:#ffffff;text-align: justify;">
                     Kopi Nusantara lahir dari kecintaan mendalam terhadap kopi Indonesia. Kami percaya bahwa Indonesia
                     memiliki biji kopi terbaik di dunia — dari Gayo Aceh yang floral, Toraja Sulawesi yang earthy,
                     hingga Flores yang bittersweet.
                 </p>
-                <p class=" mb-4" style="color:#ffffff;">
+                <p class=" mb-4" style="color:#ffffff;text-align: justify;">
                     Setiap biji dipilih langsung dari petani lokal terpercaya, disangrai dengan presisi oleh roaster
                     berpengalaman, dan disajikan oleh barista profesional yang mencintai pekerjaannya.
                 </p>

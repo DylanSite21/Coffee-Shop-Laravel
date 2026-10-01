@@ -6,7 +6,7 @@
                 <div class="footer-brand"> <img src="{{ asset('coffee-cup-svgrepo-com.svg') }}" alt=""
                         width="28" height="28" class="brand-logo"> Kopi Nusantara</div>
                 <p class="footer-tagline">Dari biji pilihan, untuk secangkir cerita</p>
-                <p style="font-size:0.875rem;color:#C8A882;line-height:1.7;max-width:300px;">
+                <p style="font-size:0.875rem;color:#C8A882;line-height:1.7;max-width:300px;text-align: justify;">
                     Kopi Nusantara hadir menghadirkan pengalaman menikmati kopi premium Indonesia yang autentik,
                     disiapkan dengan penuh dedikasi oleh barista berpengalaman kami.
                 </p>
