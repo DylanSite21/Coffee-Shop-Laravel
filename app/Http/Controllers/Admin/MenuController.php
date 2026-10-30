@@ -31,8 +31,10 @@ class MenuController extends Controller
         $menu = Menu::create($request->validated());
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('menus', 'public');
-            $menu->update(['image' => $path]);
+            $data['image'] = $storage->upload(
+                $request->file('image'),
+                'categories'
+            );
         }
 
         return redirect()->route('admin.menus.index')->with('success', 'Menu berhasil ditambahkan.');

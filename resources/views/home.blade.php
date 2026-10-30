@@ -167,19 +167,16 @@ fastfood
                 @foreach ($menus as $menu)
                     <div class="col-md-6 col-lg-4">
                         <div class="card menu-card h-100">
+
+
                             <div style="overflow:hidden;border-radius:0.75rem 0.75rem 0 0;position:relative;">
-                                @if ($menu->image)
-                                    @if (file_exists(public_path('storage/' . $menu->image)))
-                                        <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}"
-                                            class="card-img-top">
-                                    @elseif (file_exists(public_path('images/' . $menu->image)))
-                                        <img src="{{ asset('images/' . $menu->image) }}" alt="{{ $menu->name }}"
-                                            class="card-img-top">
-                                    @else
-                                        <div class="no-image"><i class="bi bi-cup-hot"></i></div>
-                                    @endif
+                                @if ($menu->image_url)
+                                    <img src="{{ $menu->image_url }}" alt="{{ $menu->name }}" class="card-img-top"
+                                        loading="lazy">
                                 @else
-                                    <div class="no-image"><i class="bi bi-cup-hot"></i></div>
+                                    <div class="no-image">
+                                        <i class="bi bi-cup-hot"></i>
+                                    </div>
                                 @endif
 
                                 @if ($menu->stock <= 0)
@@ -190,6 +187,7 @@ fastfood
                                     </span>
                                 @endif
                             </div>
+
                             {{-- lanjutkan dengan <div class="card-body ..."> seperti sebelumnya --}}
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
@@ -273,8 +271,7 @@ fastfood
             {{-- </div> --}}
             {{-- <div class="col-lg-6 mt-4 mt-lg-0"> --}}
             <div class=" mt-4 mt-lg-0" style="max-width:50%;text-align:center;">
-                <span
-                    style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#ffffff;">
+                <span style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#ffffff;">
                     Tentang Kami
                 </span> <br>
                 <div

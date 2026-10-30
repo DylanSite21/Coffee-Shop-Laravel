@@ -310,21 +310,12 @@
         <div class="md-card">
             {{-- Image --}}
             <div class="md-media">
-                @php
-                    $imgUrl = null;
-                    if ($menu->image) {
-                        if (file_exists(public_path('storage/' . $menu->image))) {
-                            $imgUrl = asset('storage/' . $menu->image);
-                        } elseif (file_exists(public_path('images/' . $menu->image))) {
-                            $imgUrl = asset('images/' . $menu->image);
-                        }
-                    }
-                @endphp
-
-                @if ($imgUrl)
-                    <img src="{{ $imgUrl }}" alt="{{ $menu->name }}">
+                @if ($menu->image_url)
+                    <img src="{{ $menu->image_url }}" alt="{{ $menu->name }}" loading="lazy">
                 @else
-                    <div class="md-noimg"><i class="bi bi-cup-hot"></i></div>
+                    <div class="md-noimg">
+                        <i class="bi bi-cup-hot"></i>
+                    </div>
                 @endif
 
                 @if ($menu->category)

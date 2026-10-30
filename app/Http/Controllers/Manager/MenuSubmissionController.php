@@ -31,8 +31,10 @@ class MenuSubmissionController extends Controller
         $menu = Menu::create(array_merge($request->validated(), ['user_id' => auth()->id()]));
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('menus', 'public');
-            $menu->update(['image' => $path]);
+            $data['image'] = $storage->upload(
+                $request->file('image'),
+                'categories'
+            );
         }
 
         return redirect()->route('manager.menus.index')->with('success', 'Menu berhasil diajukan.');

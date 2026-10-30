@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\SupabaseStorageService;
 
 class Menu extends Model
 {
@@ -56,12 +57,28 @@ class Menu extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function getImageUrlAttribute()
+    /* public function getImageUrlAttribute() */
+    /* { */
+    /*     if ($this->image && str_starts_with($this->image, 'storage/')) { */
+    /*         return asset($this->image); */
+    /*     } */
+    /**/
+    /*     return $this->image ? asset('storage/' . $this->image) : asset('images/default-menu.jpg'); */
+    /* } */
+
+    public function getImageUrlAttribute(): ?string
     {
-        if ($this->image && str_starts_with($this->image, 'storage/')) {
-            return asset($this->image);
+        if (!$this->image) {
+            return asset('images/default-menu.jpg');
         }
 
-        return $this->image ? asset('storage/' . $this->image) : asset('images/default-menu.jpg');
+        // Jika gambar tersedia di public/images, gunakan gambar lokal
+        if (file_exists(public_path('images/' . $this->image))) {
+            return asset('images/' . $this->image);
+        }
+
+        // Jika bukan gambar lokal, ambil dari Supabase Storage
+        return app(SupabaseStorageService::class)
+            ->publicUrl($this->image);
     }
 }
