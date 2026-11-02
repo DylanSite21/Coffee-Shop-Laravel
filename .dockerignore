@@ -1,0 +1,32 @@
+# Git
+.git/
+.github/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Testing
+.phpunit.cache/
+.phpunit.result.cache
+coverage/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+storage/logs/*
+
+# Docker
+docker-compose.yml
